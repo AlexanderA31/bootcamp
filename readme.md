@@ -112,9 +112,8 @@ Para ejecutar la aplicación en tu máquina local, sigue estos pasos.
 4.  **Inicia el servidor:**
     Hemos agregado un script de conveniencia para ejecutar el servidor con `nodemon`.
     ```bash
-    npm run dev
+    npx nodemon server  
     ```
-    Este comando ejecuta `nodemon server.js`. También puedes ejecutarlo directamente con `npx nodemon server.js`. El servidor estará ejecutándose en `http://localhost:4000`.
 
 ### Configuración del Frontend
 
