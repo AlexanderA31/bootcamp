@@ -1,0 +1,70 @@
+import React, { useState, useEffect } from "react";
+import AdminPanel from "./AdminPanel";
+
+const AdminLogin = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [usersData, setUsersData] = useState([]);
+
+  useEffect(() => {
+    const fetchUsersData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/admin/credentials');
+        if (!response.ok) {
+          throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+        setUsersData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchUsersData();
+  }, []);
+
+  const handleLogin = () => {
+    const user = usersData.username === username && usersData.password === password;
+    if (user) {
+      setLoginSuccess(true);
+      setShowErrorMessage(false);
+    } else {
+      setLoginSuccess(false);
+      setShowErrorMessage(true);
+    }
+  };
+
+  return (
+    <div>
+      {loginSuccess ? (
+        <AdminPanel />
+      ) : (
+        <div className="login-body">
+          <div className="login-container">
+            <h2>Inicio de Sesión de Administrador</h2>
+            <input
+              type="text"
+              placeholder="Nombre de Usuario"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              />
+              {showErrorMessage && (
+                <p className="error-message">Nombre de usuario o contraseña incorrectos</p>
+              )}
+            <button className="float-right" onClick={handleLogin}>Iniciar Sesión</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AdminLogin;
