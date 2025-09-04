@@ -1,25 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-const { postPetRequest, approveRequest, deletePost, allPets } = require('../Controller/PetController');
+const upload = require('../utils/upload'); // 👈 Importa la config de multer
+const {
+  postPetRequest,
+  approveRequest,
+  getPets,
+  deletePost
+} = require('../Controller/PetController');
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../images'));
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname));
-  }
-});
+// POST /pets → crear mascota con imagen
+router.post('/pets', upload.single('image'), postPetRequest);
 
-const upload = multer({ storage: storage });
+// GET /pets → listar mascotas (todas o por ?status=Pending)
+router.get('/pets', getPets);
 
-router.get('/requests', (req, res) => allPets('Pending', req, res));
-router.get('/approvedPets', (req, res) => allPets('Approved', req, res));
-router.get('/adoptedPets', (req, res) => allPets('Adopted', req, res));
-router.post('/services', upload.single('picture'), postPetRequest);
-router.put('/approving/:id', approveRequest);
-router.delete('/delete/:id', deletePost);
+// PATCH /pets/:id → actualizar estado de mascota
+router.patch('/pets/:id', approveRequest);
+
+// DELETE /pets/:id → eliminar mascota
+router.delete('/pets/:id', deletePost);
 
 module.exports = router;
+
