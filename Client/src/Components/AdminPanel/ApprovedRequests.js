@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PetCards from './PetCards'
+import  PetTable from './PetTable'
 
 const ApprovedRequests = () => {
   const [requests, setRequests] = useState([])
@@ -31,9 +32,7 @@ const ApprovedRequests = () => {
         <p>Cargando...</p>
       ) : (
         requests.length > 0 ? (
-          requests.map((request, index) => (
-            <PetCards key={request._id} pet={request} updateCards={fetchRequests} deleteBtnText={"Eliminar Publicación"} approveBtn={false}/>
-          ))
+          <PetTable pets={requests} updateTable={fetchRequests} />
         ) : (
           <p>No hay mascotas aprobadas disponibles</p>
         )
