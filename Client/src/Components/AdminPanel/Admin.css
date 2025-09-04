@@ -7,6 +7,8 @@
   background-color: #f2f2f2;
   color: var(--text);
   padding: 10px 20px;
+  position: relative;
+  z-index: 100; /* Asegurar que el navbar esté arriba */
 }
 
 .dark .navbar {
@@ -29,12 +31,10 @@
   text-align: center;
   padding: 10px;
   width: 100%;
-
 }
 
 .admin-footer p {
   margin: 0;
-  
 }
 
 .login-body {
@@ -86,11 +86,12 @@
   margin-bottom: 10px;
 }
 
-
 .admin-screen-container {
   display: flex;
   justify-content: space-between;
   padding: 50px 0;
+  position: relative; /* Crear contexto de apilamiento */
+  z-index: 1; /* Menor que el navbar */
 }
 
 .admin-screen-left {
@@ -121,11 +122,82 @@
 
 .admin-screen-left p:hover {
   opacity: 0.8;
- }
+}
 
 .admin-screen-right {
   border-left: 3px solid #fbc256;
   padding: 0 4vw;
   max-width: 80vw;
   min-width: 80vw;
+  position: relative; /* Crear contexto para elementos internos */
+  overflow: visible; /* Permitir que el contenido sea visible */
+}
+
+/* Estilos específicos para el dropdown del filtro */
+.dropdown-container {
+  position: relative;
+  z-index: 10; /* Asegurar que esté por encima del contenido pero debajo del navbar */
+}
+
+.req-filter-selection {
+  position: relative;
+  z-index: 10;
+  background: white;
+  border: 2px solid #fbc256;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.req-filter-selection:focus {
+  border-color: #e0a040;
+  box-shadow: 0 0 0 3px rgba(251, 194, 86, 0.2);
+}
+
+/* Asegurar que los popups estén correctamente posicionados */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Muy alto para estar por encima de todo */
+  flex-direction: column;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-height: 70vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1001;
+}
+
+.close-btn {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
