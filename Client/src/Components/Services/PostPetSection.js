@@ -12,7 +12,7 @@ const PostPetSection = () => {
   const [emailError, setEmailError] = useState(false);
   const [ageError, setAgeError] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [type, setType] = useState("None");
+  const [type, setType] = useState("Ninguno");
   const [picture, setPicture] = useState(null);
   const [fileName, setFileName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -53,7 +53,7 @@ const PostPetSection = () => {
       !email ||
       !phone ||
       !fileName ||
-      type === "None" ||
+      type === "Ninguno" ||
       ageError
     ) {
       setFormError(true);
@@ -102,6 +102,7 @@ const PostPetSection = () => {
       setPhone("");
       setPicture(null);
       setFileName("");
+      setType("Ninguno");
       togglePopup();
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -110,36 +111,98 @@ const PostPetSection = () => {
     }
   };
 
-
   return (
     <section className="post-pet-section">
       <h2>Publicar una Mascota para Adopción</h2>
       <img src={postPet} alt="Pet Looking for a Home" />
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div className="input-box">
-          <label>Nombre:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+        {/* INFORMACIÓN DE CONTACTO */}
+       
+
+        <div className="form-row">
+           <h3>Información de Contacto</h3>
+          <div className="input-box">
+            <label>Correo Electrónico:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="tu@email.com"
+            />
+          </div>
+
+          <div className="input-box">
+            <label>Teléfono:</label>
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Ingresa tu teléfono"
+            />
+          </div>
         </div>
 
-        <div className="input-box">
-          <label>Edad de la Mascota:</label>
-          <input
-            type="text"
-            value={age}
-            onChange={(e) => {setAge(e.target.value);}}
-          />
+        {/* INFORMACIÓN DE LA MASCOTA */}
+      
+
+        <div className="form-row">
+            <h3>Información de la Mascota</h3>
+          <div className="input-box">
+            
+            <label>Nombre:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Nombre de la mascota"
+            />
+          </div>
+
+          <div className="input-box">
+            <label>Edad de la Mascota:</label>
+            <input
+              type="text"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              placeholder="Ej: 2 años"
+            />
+          </div>
         </div>
 
-        <div className="input-box">
+        <div className="form-row">
+          <div className="input-box">
+            <label>Ubicación:</label>
+            <input
+              type="text"
+              value={area}
+              onChange={(e) => setArea(e.target.value)}
+              placeholder="Ciudad, País"
+            />
+          </div>
+
+          <div className="filter-selection-service">
+            <label>Tipo:</label>
+            <select
+              value={type}
+              onChange={(event) => setType(event.target.value)}
+            >
+              <option value="Ninguno">Selecciona el tipo</option>
+              <option value="Perro">Perro</option>
+              <option value="Gato">Gato</option>
+              <option value="Conejo">Conejo</option>
+              <option value="Pájaro">Pájaro</option>
+              <option value="Pez">Pez</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="input-box full-width">
           <label>Foto:</label>
           <label className="file-input-label">
-            <span className="file-input-text">
-              {fileName || "Elegir una Foto"}
+            <span className="file-input-label-text">
+              {fileName || "📸 Elegir una Foto"}
             </span>
             <input
               className="file-input"
@@ -150,65 +213,26 @@ const PostPetSection = () => {
           </label>
         </div>
 
-        <div className="input-box">
-          <label>Ubicación:</label>
-          <input
-            type="text"
-            value={area}
-            onChange={(e) => setArea(e.target.value)}
-          />
-        </div>
-
-        <div className="filter-selection-service">
-          <label>Tipo:</label>
-          <select
-            value={type}
-            onChange={(event) => setType(event.target.value)}
-          >
-            <option value="Ninguno">Ninguno</option>
-            <option value="Perro">Perro</option>
-            <option value="Gato">Gato</option>
-            <option value="Conejo">Conejo</option>
-            <option value="Pájaro">Pájaro</option>
-            <option value="Pez">Pez</option>
-            <option value="Otro">Otro</option>
-          </select>
-        </div>
-
-        <div className="input-box">
+        <div className="input-box full-width">
           <h3>Justificación para dar una mascota</h3>
           <textarea
             rows="4"
             value={justification}
             onChange={(e) => setJustification(e.target.value)}
-          ></textarea>
-        </div>
-
-        <h3>Información de Contacto</h3>
-
-        <div className="input-box">
-          <label>Correo Electrónico:</label>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Explica por qué necesitas dar en adopción a tu mascota..."
           />
         </div>
 
-        <div className="input-box">
-          <label>Teléfono:</label>
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
-
+        {/* MENSAJES DE ERROR */}
         {emailError && (
-          <p className="error-message">Por favor, proporcione una dirección de correo electrónico válida.</p>
+          <p className="error-message">
+            Por favor, proporcione una dirección de correo electrónico válida de Gmail.
+          </p>
         )}
         {formError && (
-          <p className="error-message">Por favor, rellene todos los campos correctamente.</p>
+          <p className="error-message">
+            Por favor, rellene todos los campos correctamente.
+          </p>
         )}
 
         <button type="submit" className="cta-button" disabled={isSubmitting}>
@@ -219,9 +243,10 @@ const PostPetSection = () => {
           <div className="popup">
             <div className="popup-content">
               <h4>Solicitud enviada; nos pondremos en contacto con usted pronto.</h4>
+              <button onClick={togglePopup} className="close-btn">
+                ✕
+              </button>
             </div>
-            <button onClick={togglePopup} className="close-btn fa fa-times">
-            </button>
           </div>
         )}
       </form>
