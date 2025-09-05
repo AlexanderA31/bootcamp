@@ -14,9 +14,9 @@ const CardBelowHome = () => {
   return (
     <div className='dark-grey-container'>
   <div className='left-pic'><img src={HomeDarkCardLeftPic} alt="Perro con juguete"/></div>
-  <div className='left-para'><p><p className='adopted-pets-num'>{adoptedPets}</p> Amigos Peludos<br/>Viviendo Sus Mejores Vidas</p></div>
+  <div className='left-para'><p><p className='adopted-pets-num'></p>Obten tu primer<br/> Amigo Peludo</p></div>
   <div className='right-pic'><img src={HomeDarkCardRightPic} alt="Foto de perro" /></div>
-  <div className='right-para'><p className='we-do'>¿QUÉ HACEMOS?</p>Con un enfoque en emparejar la mascota correcta con la familia correcta, PawFinds hace que sea fácil adoptar amor y fomentar la felicidad.</div>
+  <div className='right-para'><p className='we-do'>¿QUÉ HACEMOS?</p>Con un enfoque en emparejar la mascota correcta con la familia correcta, Adop.me hace que sea fácil adoptar amor y fomentar la felicidad.</div>
 </div>
   )
 }

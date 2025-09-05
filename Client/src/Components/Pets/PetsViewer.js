@@ -27,7 +27,7 @@ const PetsViewer = (props) => {
         <p>{formatTimeAgo(props.pet.updatedAt)}</p>
       </div>
       <div className='show-interest-btn'>
-        <button onClick={togglePopup}>Mostrar Interés <i className="fa fa-paw"></i></button>
+        <button onClick={togglePopup}>Adoptar <i className="fa fa-paw"></i></button>
       </div>
       {showPopup && (
         <div className='popup'>
