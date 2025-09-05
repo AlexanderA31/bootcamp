@@ -35,7 +35,7 @@ const AdoptSection = () => {
         Adoptar una mascota conlleva responsabilidades, como la alimentación, el aseo, el ejercicio regular y la atención médica.
       </p>
 
-      <Link to="/pets">
+      <Link to="/mascotas">
         <button className="cta-button" onClick={scrollToTop}>Encuentra tu Mascota Perfecta</button>
       </Link>
     </section>

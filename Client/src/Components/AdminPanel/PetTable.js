@@ -37,7 +37,7 @@ const PetTable = ({ pets, updateTable }) => {
   const handleApprove = async (pet) => {
     setIsApproving(prev => ({ ...prev, [pet._id]: true }));
     try {
-      const response = await fetch(`http://localhost:4000/approving/${pet._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/approving/${pet._id}`, {
         method: 'PUT',
         body: JSON.stringify({
           status: "Approved"
@@ -62,7 +62,7 @@ const PetTable = ({ pets, updateTable }) => {
   const deleteFormsAdoptedPet = async (pet) => {
     setIsDeleting(prev => ({ ...prev, [pet._id]: true }));
     try {
-      const deleteResponses = await fetch(`http://localhost:4000/form/delete/many/${pet._id}`, {
+      const deleteResponses = await fetch(`${process.env.REACT_APP_API_URL}/form/delete/many/${pet._id}`, {
         method: 'DELETE'
       });
       if (!deleteResponses.ok) {
@@ -76,7 +76,7 @@ const PetTable = ({ pets, updateTable }) => {
 
   const handleReject = async (pet) => {
     try {
-      const response = await fetch(`http://localhost:4000/delete/${pet._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/delete/${pet._id}`, {
         method: 'DELETE'
       });
 
@@ -135,7 +135,7 @@ const PetTable = ({ pets, updateTable }) => {
                 <tr key={pet._id} style={styles.bodyRow}>
                   <td style={styles.bodyCell}>
                     <img
-                      src={`http://localhost:4000/images/${pet.filename}`}
+                      src={`${process.env.REACT_APP_API_URL}/images/${pet.filename}`}
                       alt={pet.name}
                       style={styles.petImage}
                       onError={(e) => {

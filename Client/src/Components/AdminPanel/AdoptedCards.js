@@ -15,7 +15,7 @@ const AdoptedCards = (props) => {
  const handleReject = async () => {
     setIsDeleting(true)
     try {
-      const response = await fetch(`http://localhost:4000/delete/${props.pet._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/delete/${props.pet._id}`, {
         method: 'DELETE'
       })
 
@@ -37,7 +37,7 @@ const AdoptedCards = (props) => {
     <div className='req-containter'>
       <div className='pet-view-card'>
         <div className='pet-card-pic'>
-          <img src={`http://localhost:4000/images/${props.pet.filename}`} alt={props.pet.name} />
+          <img src={`${process.env.REACT_APP_API_URL}/images/${props.pet.filename}`} alt={props.pet.name} />
         </div>
         <div className='pet-card-details'>
           <h2>{props.pet.name}</h2>
@@ -55,8 +55,8 @@ const AdoptedCards = (props) => {
             <div className='popup-content'>
               <p>¡Vaya!... Error de Conexión</p>
             </div>
-            <button onClick={() => setShowErrorPopup(!showErrorPopup)} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            <button onClick={() => setShowErrorPopup(!showErrorPopup)} className='close-btn fa fa-times'>
+
             </button>
           </div>
         )}
@@ -75,8 +75,8 @@ const AdoptedCards = (props) => {
             <button onClick={() => {
               setShowApproved(!showApproved)
               props.updateCards()
-            }} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            }} className='close-btn fa fa-times'>
+    
             </button>
           </div>
         )}
@@ -89,8 +89,8 @@ const AdoptedCards = (props) => {
             <button onClick={() => {
               setshowDeletedSuccess(!showDeletedSuccess)
               props.updateCards()
-            }} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            }} className='close-btn fa fa-times'>
+       
             </button>
           </div>
         )}

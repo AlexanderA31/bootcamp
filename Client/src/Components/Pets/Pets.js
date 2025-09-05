@@ -9,7 +9,7 @@ const Pets = () => {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await fetch('http://localhost:4000/approvedPets')
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/approvedPets`)
         if (!response.ok) {
           throw new Error('An error occurred')
         }
@@ -40,12 +40,12 @@ const Pets = () => {
           onChange={(event) => setFilter(event.target.value)}
         >
           <option value="all">Todas las Mascotas</option>
-          <option value="Dog">Perros</option>
-          <option value="Cat">Gatos</option>
-          <option value="Rabbit">Conejos</option>
-          <option value="Bird">Pájaros</option>
-          <option value="Fish">Peces</option>
-          <option value="Other">Otro</option>
+          <option value="Perro">Perros</option>
+          <option value="Gato">Gatos</option>
+          <option value="Conejo">Conejos</option>
+          <option value="Pájaro">Pájaros</option>
+          <option value="Pez">Peces</option>
+          <option value="Otro">Otro</option>
         </select>
       </div>
       <div className="pet-container">

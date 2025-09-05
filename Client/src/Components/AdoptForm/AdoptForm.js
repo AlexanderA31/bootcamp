@@ -41,7 +41,7 @@ function AdoptForm(props) {
 
       setIsSubmitting(true)
 
-      const response = await fetch('http://localhost:4000/form/save', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/form/save`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ function AdoptForm(props) {
       <div className="form-pet-container">
         <div className="pet-details">
           <div className="pet-pic">
-            <img src={`http://localhost:4000/images/${props.pet.filename}`} alt={props.pet.name} />
+            <img src={`${process.env.REACT_APP_API_URL}/images/${props.pet.filename}`} alt={props.pet.name} />
           </div>
           <div className="pet-info">
             <h2>{props.pet.name}</h2>
@@ -105,20 +105,18 @@ function AdoptForm(props) {
         <div className="form-div">
           <form onSubmit={handleSubmit} className="custom-form">
             <div className="custom-input-box">
-              <div className="email-not-valid">
-                <label className="custom-label">Correo Electrónico:</label>
-                {emailError && (
-                  <p>
-                    Por favor, proporcione una dirección de correo electrónico válida.
-                  </p>
-                )}
-              </div>
+              <label className="custom-label">Correo Electrónico:</label>
               <input
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="custom-input"
               />
+              {emailError && (
+                <p className="error-message">
+                  Por favor, proporcione una dirección de correo electrónico válida.
+                </p>
+              )}
             </div>
             <div className="custom-input-box">
               <label className="custom-label">Teléfono:</label>
@@ -169,8 +167,8 @@ function AdoptForm(props) {
                     ¡Vaya!... Error de Conexión.
                   </h4>
                 </div>
-                <button onClick={(e) => (setErrPopup(!ErrPopup))} className="close-btn">
-                  Cerrar <i className="fa fa-times"></i>
+                <button onClick={(e) => (setErrPopup(!ErrPopup))} className="close-btn fa fa-times">
+
                 </button>
               </div>
             )}
@@ -184,8 +182,7 @@ function AdoptForm(props) {
                 <button onClick={(e) => {
                   setSuccPopup(!SuccPopup);
                   props.closeForm();
-                }} className="close-btn">
-                  Cerrar <i className="fa fa-times"></i>
+                }} className="close-btn fa fa-times">
                 </button>
               </div>
             )}

@@ -17,7 +17,7 @@ const FormCard = (props) => {
   const handleApprove = async () => {
     setIsApproving(true);
     try {
-      const response = await fetch(`http://localhost:4000/approving/${props.form.petId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/approving/${props.form.petId}`, {
         method: 'PUT',
         body: JSON.stringify({
           email: props.form.email,
@@ -43,7 +43,7 @@ const FormCard = (props) => {
   
   const deleteFormAdoptedPet = async () => {
     try {
-      const deleteResponse = await fetch(`http://localhost:4000/form/delete/many/${props.form.petId}`, {
+      const deleteResponse = await fetch(`${process.env.REACT_APP_API_URL}/form/delete/many/${props.form.petId}`, {
         method: 'DELETE'
       });
       if (!deleteResponse.ok) {
@@ -59,7 +59,7 @@ const FormCard = (props) => {
   const handleReject = async () => {
     setIsDeleting(true)
     try {
-      const response = await fetch(`http://localhost:4000/form/reject/${props.form._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/form/reject/${props.form._id}`, {
         method: 'DELETE'
       })
 
@@ -101,8 +101,7 @@ const FormCard = (props) => {
             <div className='popup-content'>
               <p>¡Vaya!... Error de Conexión</p>
             </div>
-            <button onClick={() => setShowErrorPopup(!showErrorPopup)} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            <button onClick={() => setShowErrorPopup(!showErrorPopup)} className='close-btn fa fa-times'>
             </button>
           </div>
         )}
@@ -121,8 +120,8 @@ const FormCard = (props) => {
             <button onClick={() => {
               props.updateCards()
               setShowApproved(!showApproved)
-            }} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            }} className='close-btn fa fa-times'>
+      
             </button>
           </div>
         )}
@@ -135,8 +134,8 @@ const FormCard = (props) => {
             <button onClick={() => {
               setShowDeletedSuccess(!showDeletedSuccess)
               props.updateCards()
-            }} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            }} className='close-btn fa fa-times'>
+        
             </button>
           </div>
         )}
@@ -152,8 +151,8 @@ const FormCard = (props) => {
               <p><b>¿Tiene Otras Mascotas? </b> {props.form.familyComposition}</p>
               <p>{formatTimeAgo(props.form.updatedAt)}</p>
             </div>
-            <button onClick={() => setShowDetailsPopup(false)} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            <button onClick={() => setShowDetailsPopup(false)} className='close-btn fa fa-times'>
+ 
             </button>
           </div>
         )}

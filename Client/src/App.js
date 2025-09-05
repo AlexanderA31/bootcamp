@@ -39,7 +39,7 @@ const App = () => {
             }
           />
           <Route
-            path="/services"
+            path="/servicios"
             element={
               <Layout>
                 <Services />
@@ -48,7 +48,7 @@ const App = () => {
           />
           
           <Route
-            path="/pets"
+            path="/mascotas"
             element={
               <Layout>
                 <Pets />
@@ -56,7 +56,7 @@ const App = () => {
             }
           />
           <Route
-            path="/adopt-form"
+            path="/adoptar"
             element={
               <Layout>
                 <AdoptForm />
