@@ -459,6 +459,8 @@ input:checked + .slider:before {
     font-weight: bold;
     transition: background-color 0.3s;
     border: none;
+    grid-column: 1 / -1;
+    justify-self: center;
 }
 
 .cta-button:hover {
@@ -653,11 +655,19 @@ input:checked + .slider:before {
 }
 
 .pet-view-card {
+    background-color: var(--background);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    margin: 10px 10px;
-    border: 1px solid var(--orange);
-    width: 310px;
+    margin: 15px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    width: 300px;
+}
+
+.pet-view-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .pet-card-pic {
@@ -665,26 +675,70 @@ input:checked + .slider:before {
     min-width: 250px;
 }
 
-.pet-card-pic img {
-    width: 310px;
+
+.pet-img-rounded {
+    width: 180px;
     height: 180px;
     object-fit: cover;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    margin: 0 auto;
+    display: block;
+    transition: transform 0.3s;
 }
 
+
+
+
 .pet-card-details {
-    padding: 5px 10px;
+    padding: 15px;
+    
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  
 }
+
 
 .pet-card-details h2 {
     font-family: "Varela Round", sans-serif;
     color: var(--orange);
     text-align: center;
-    margin: 5px 0;
+    margin: 5px 0 15px 0;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
 
-.pet-card-details p {
+
+.pet-info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
     font-family: "Varela Round", sans-serif;
+    color: var(--darkGrey);
+    font-size: 1rem;
+}
+
+.pet-info-icon {
+    margin-right: 8px;
     color: var(--orange);
+    font-size: 1.2em;
+    width: 22px;
+    text-align: center;
+}
+
+.pet-info-label {
+    font-weight: bold;
+    margin-right: 5px;
+    color: var(--orange);
+}
+
+.pet-info-value {
+    color: var(--darkGrey);
+    background: rgba(255, 234, 210, 0.4);
+    border-radius: 8px;
+    padding: 2px 8px;
+    margin-left: 3px;
 }
 
 .show-interest-btn {
@@ -693,51 +747,64 @@ input:checked + .slider:before {
 }
 
 .show-interest-btn button {
-    font-family: "Varela Round", sans-serif;
+    background-color: var(--orange);
+    border: none;
+    border-radius: 20px;
+    color: var(--white);
+    cursor: pointer;
     font-size: 14px;
     margin: 10px 0;
-    border-radius: 100px;
-    border: none;
-    padding: 8px 15px;
-    color: var(--white);
-    background-color: var(--orange);
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
 }
 
 .show-interest-btn button:hover {
-    cursor: pointer;
     background-color: var(--hoverorange);
 }
 
 .popup {
+    align-items: center;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 1000;
 }
 
 .popup-content {
     background-color: var(--background);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    max-height: 90vh;
+    max-width: 500px;
+    overflow-y: auto;
+    padding: 25px;
+    position: relative;
+    width: 90%;
 }
 
 .close-btn {
-    background-color: #f81900;
+    background-color: transparent;
     border: none;
-    color: white;
-    padding: 8px 15px;
-    margin-top: 10px;
+    color: #ffffff;
     cursor: pointer;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1;
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    transition: color 0.3s ease;
+    padding: 0;
 }
 
-.close-btn i {
-    margin-left: 5px;
+.close-btn:hover {
+    color: #ffffff;
 }
 
 .form-pet-container {
@@ -802,11 +869,18 @@ input:checked + .slider:before {
     margin-bottom: 20px;
 }
 
+.custom-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
 .custom-form p {
     font-family: "Varela Round", sans-serif;
     color: var(--text);
     font-size: 16px;
     margin-bottom: 10px;
+    grid-column: 1 / -1;
 }
 
 .custom-form h3 {
@@ -827,8 +901,11 @@ input:checked + .slider:before {
 .custom-input-box {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.custom-label {
+    margin-bottom: 5px;
 }
 
 .custom-input {
@@ -840,15 +917,19 @@ input:checked + .slider:before {
 }
 
 .custom-cta-button {
-    display: inline-block;
-    padding: 10px 16px;
+    display: block;
+    padding: 12px 20px;
     background-color: var(--orange);
     color: var(--white);
     text-decoration: none;
-    border-radius: 100px;
+    border-radius: 25px;
     font-weight: bold;
     transition: background-color 0.3s;
     border: none;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .custom-cta-button:hover {
@@ -1004,10 +1085,10 @@ input:checked + .slider:before {
 
 .login-container {
     width: 300px;
-    margin: auto auto;
+    margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     background-color: var(--background);

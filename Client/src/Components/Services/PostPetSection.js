@@ -81,7 +81,7 @@ const PostPetSection = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:4000/services", {
+      const response = await fetch("http://localhost:4000/servicios", {
         method: "POST",
         body: formData,
       });
@@ -165,13 +165,13 @@ const PostPetSection = () => {
             value={type}
             onChange={(event) => setType(event.target.value)}
           >
-            <option value="None">Ninguno</option>
-            <option value="Dog">Perro</option>
-            <option value="Cat">Gato</option>
-            <option value="Rabbit">Conejo</option>
-            <option value="Bird">Pájaro</option>
-            <option value="Fish">Pez</option>
-            <option value="Other">Otro</option>
+            <option value="Ninguno">Ninguno</option>
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+            <option value="Conejo">Conejo</option>
+            <option value="Pájaro">Pájaro</option>
+            <option value="Pez">Pez</option>
+            <option value="Otro">Otro</option>
           </select>
         </div>
 
@@ -220,8 +220,7 @@ const PostPetSection = () => {
             <div className="popup-content">
               <h4>Solicitud enviada; nos pondremos en contacto con usted pronto.</h4>
             </div>
-            <button onClick={togglePopup} className="close-btn">
-              Cerrar <i className="fa fa-times"></i>
+            <button onClick={togglePopup} className="close-btn fa fa-times">
             </button>
           </div>
         )}

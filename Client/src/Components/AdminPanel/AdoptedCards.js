@@ -55,8 +55,8 @@ const AdoptedCards = (props) => {
             <div className='popup-content'>
               <p>¡Vaya!... Error de Conexión</p>
             </div>
-            <button onClick={() => setShowErrorPopup(!showErrorPopup)} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            <button onClick={() => setShowErrorPopup(!showErrorPopup)} className='close-btn fa fa-times'>
+
             </button>
           </div>
         )}
@@ -75,8 +75,8 @@ const AdoptedCards = (props) => {
             <button onClick={() => {
               setShowApproved(!showApproved)
               props.updateCards()
-            }} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            }} className='close-btn fa fa-times'>
+    
             </button>
           </div>
         )}
@@ -89,8 +89,8 @@ const AdoptedCards = (props) => {
             <button onClick={() => {
               setshowDeletedSuccess(!showDeletedSuccess)
               props.updateCards()
-            }} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            }} className='close-btn fa fa-times'>
+       
             </button>
           </div>
         )}

@@ -105,20 +105,18 @@ function AdoptForm(props) {
         <div className="form-div">
           <form onSubmit={handleSubmit} className="custom-form">
             <div className="custom-input-box">
-              <div className="email-not-valid">
-                <label className="custom-label">Correo Electrónico:</label>
-                {emailError && (
-                  <p>
-                    Por favor, proporcione una dirección de correo electrónico válida.
-                  </p>
-                )}
-              </div>
+              <label className="custom-label">Correo Electrónico:</label>
               <input
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="custom-input"
               />
+              {emailError && (
+                <p className="error-message">
+                  Por favor, proporcione una dirección de correo electrónico válida.
+                </p>
+              )}
             </div>
             <div className="custom-input-box">
               <label className="custom-label">Teléfono:</label>
@@ -169,8 +167,8 @@ function AdoptForm(props) {
                     ¡Vaya!... Error de Conexión.
                   </h4>
                 </div>
-                <button onClick={(e) => (setErrPopup(!ErrPopup))} className="close-btn">
-                  Cerrar <i className="fa fa-times"></i>
+                <button onClick={(e) => (setErrPopup(!ErrPopup))} className="close-btn fa fa-times">
+
                 </button>
               </div>
             )}
@@ -184,8 +182,7 @@ function AdoptForm(props) {
                 <button onClick={(e) => {
                   setSuccPopup(!SuccPopup);
                   props.closeForm();
-                }} className="close-btn">
-                  Cerrar <i className="fa fa-times"></i>
+                }} className="close-btn fa fa-times">
                 </button>
               </div>
             )}

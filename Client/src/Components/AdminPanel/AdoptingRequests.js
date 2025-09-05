@@ -124,8 +124,8 @@ const AdoptingRequests = () => {
                 <p><b>Justificación:</b> {selectedPet.justification}</p>
               </div>
             </div>
-            <button onClick={closePetDetailsPopup} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            <button onClick={closePetDetailsPopup} className='close-btn fa fa-times'>
+      
             </button>
           </div>
         </div>

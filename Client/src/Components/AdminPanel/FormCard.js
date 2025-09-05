@@ -101,8 +101,7 @@ const FormCard = (props) => {
             <div className='popup-content'>
               <p>¡Vaya!... Error de Conexión</p>
             </div>
-            <button onClick={() => setShowErrorPopup(!showErrorPopup)} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            <button onClick={() => setShowErrorPopup(!showErrorPopup)} className='close-btn fa fa-times'>
             </button>
           </div>
         )}
@@ -121,8 +120,8 @@ const FormCard = (props) => {
             <button onClick={() => {
               props.updateCards()
               setShowApproved(!showApproved)
-            }} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            }} className='close-btn fa fa-times'>
+      
             </button>
           </div>
         )}
@@ -135,8 +134,8 @@ const FormCard = (props) => {
             <button onClick={() => {
               setShowDeletedSuccess(!showDeletedSuccess)
               props.updateCards()
-            }} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            }} className='close-btn fa fa-times'>
+        
             </button>
           </div>
         )}
@@ -152,8 +151,8 @@ const FormCard = (props) => {
               <p><b>¿Tiene Otras Mascotas? </b> {props.form.familyComposition}</p>
               <p>{formatTimeAgo(props.form.updatedAt)}</p>
             </div>
-            <button onClick={() => setShowDetailsPopup(false)} className='close-btn'>
-              Cerrar <i className="fa fa-times"></i>
+            <button onClick={() => setShowDetailsPopup(false)} className='close-btn fa fa-times'>
+ 
             </button>
           </div>
         )}
