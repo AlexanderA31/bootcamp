@@ -1,170 +1,306 @@
-# Plataforma de Adopción de Mascotas
+# 🐾 AdopMe - Plataforma de Adopción de Mascotas
 
-Esta es una aplicación web full-stack para un centro de adopción de mascotas. Permite a los usuarios navegar por las mascotas disponibles, ver detalles sobre ellas y enviar formularios de adopción, cuenta con un chatbot especializado para facilitar la adopcion y consulta de mascotas disponibles, También incluye un panel de administración para gestionar los listados de mascotas y las solicitudes de adopción.
+Una aplicación web full-stack con chatbot inteligente para la gestión integral de mascotas y procesos de adopción. Facilita la conexión entre mascotas que necesitan un hogar y familias dispuestas a adoptar.
 
-<img width="1607" height="923" alt="Sin título" src="https://github.com/user-attachments/assets/72028752-693b-4bf2-aeb1-130273d85431" />
+<div align="center">
 
-## Estructura del Proyecto
+[![Vercel Deploy](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://adopmebootcamp.vercel.app)
+[![MongoDB](https://img.shields.io/badge/Database-MongoDB-green?style=for-the-badge&logo=mongodb)](https://www.mongodb.com)
+[![React](https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge&logo=react)](https://reactjs.org)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js-green?style=for-the-badge&logo=node.js)](https://nodejs.org)
 
-El proyecto es un monorepo con dos directorios principales:
+**[🌐 Ver Demo en Vivo](https://adopmebootcamp.vercel.app)** | **[📱 Repositorio](https://github.com/AlexanderA31/bootcamp)**
+
+</div>
+
+---
+
+## 📋 Tabla de Contenidos
+
+- [🎯 Características Principales](#-características-principales)
+- [🖼️ Capturas de Pantalla](#️-capturas-de-pantalla)
+- [🛠️ Tecnologías Utilizadas](#️-tecnologías-utilizadas)
+- [🏗️ Estructura del Proyecto](#️-estructura-del-proyecto)
+- [⚡ Instalación y Configuración](#-instalación-y-configuración)
+- [🚀 Despliegue](#-despliegue)
+- [🔧 Variables de Entorno](#-variables-de-entorno)
+- [🤝 Contribuir](#-contribuir)
+- [👥 Autores](#-autores)
+- [📄 Licencia](#-licencia)
+
+---
+
+## 🎯 Características Principales
+
+### 🏠 **Para Usuarios**
+- 🔍 **Exploración de Mascotas**: Navega por mascotas disponibles con filtros avanzados
+- 📱 **Diseño Responsivo**: Interfaz optimizada para móviles y desktop
+- 🌙 **Modo Oscuro/Claro**: Alternancia entre temas según preferencia del usuario
+- 📝 **Formularios de Adopción**: Sistema intuitivo para solicitar adopciones
+- 🎁 **Dar en Adopción**: Formulario para usuarios que desean dar sus mascotas en adopción
+- 🤖 **Chatbot Inteligente**: Asistente virtual que guía en el proceso de adopción
+
+### 🛡️ **Para Administradores**
+- 📊 **Panel de Control**: Gestión completa de mascotas y solicitudes
+- ✅ **Aprobación de Publicaciones**: Control de mascotas publicadas por usuarios
+- 📋 **Gestión de Adopciones**: Seguimiento de todas las solicitudes de adopción
+- 🗑️ **Administración de Contenido**: Eliminar y editar listados de mascotas
+
+### 🔒 **Características Técnicas**
+- 🔐 **Autenticación JWT**: Sistema seguro de login y registro
+- 🖼️ **Gestión de Imágenes**: Integración con Cloudinary para almacenamiento
+- ⚡ **Rendimiento Optimizado**: Carga lazy de imágenes y componentes
+- 🛡️ **Validación Robusta**: Validación tanto en frontend como backend
+- 🌐 **API RESTful**: Backend estructurado y escalable
+
+---
+
+## 🖼️ Capturas de Pantalla
+
+### 🏠 Interfaz Principal
+![Interfaz Principal](https://github.com/user-attachments/assets/72028752-693b-4bf2-aeb1-130273d85431)
+
+### 📱 Características Destacadas
+- **Modo Claro/Oscuro**: Interfaz adaptable a preferencias del usuario
+- **Catálogo de Mascotas**: Vista de mascotas disponibles con información detallada
+- **Formulario de Adopción**: Proceso simple y guiado para adoptar
+- **Chatbot Asistente**: Ayuda personalizada durante el proceso
+- **Panel Administrativo**: Gestión completa del sistema
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+### 🎨 **Frontend**
+- **React.js** - Biblioteca principal para UI
+- **React Router** - Navegación y enrutamiento
+- **Context API** - Gestión de estado global
+- **CSS3** - Estilos con diseño responsivo
+
+### ⚙️ **Backend**
+- **Node.js** - Entorno de ejecución del servidor
+- **Express.js** - Framework para API RESTful
+- **Mongoose** - ODM para MongoDB
+- **JWT** - Autenticación mediante tokens
+- **Multer** - Manejo de archivos e imágenes
+
+### 🗃️ **Base de Datos**
+- **MongoDB Atlas** - Base de datos NoSQL en la nube
+- **Mongoose** - Modelado y validaciones de datos
+
+### ☁️ **Servicios en la Nube**
+- **Vercel** - Despliegue del frontend
+- **Render** - Despliegue del backend
+- **Cloudinary** - Almacenamiento de imágenes
+- **Gemini API** - Chatbot inteligente
+
+---
+
+## 🏗️ Estructura del Proyecto
 
 ```
 pets/
-├── Client/                     # Frontend - Aplicación React
+├── Client/                     # 🎨 Frontend - Aplicación React
 │   ├── public/                 # Archivos públicos
 │   │   ├── index.html         # Plantilla HTML principal
 │   │   ├── favicon.ico        # Favicon del sitio
 │   │   └── manifest.json      # Configuración PWA
-│   ├── src/                   # Código fuente React
+│   ├── src/                   # 💻 Código fuente React
 │   │   ├── components/        # Componentes reutilizables
 │   │   │   ├── Header/        # Componente de encabezado
 │   │   │   ├── Footer/        # Componente de pie de página
 │   │   │   ├── PetCard/       # Tarjeta individual de mascota
 │   │   │   ├── AdoptionForm/  # Formulario de adopción
 │   │   │   └── AdminPanel/    # Panel de administración
-│   │   ├── pages/             # Páginas principales
+│   │   ├── pages/             # 📄 Páginas principales
 │   │   │   ├── Home/          # Página de inicio
 │   │   │   ├── PetList/       # Lista de mascotas
 │   │   │   ├── PetDetail/     # Detalles de mascota
 │   │   │   ├── About/         # Página acerca de
 │   │   │   └── Contact/       # Página de contacto
-│   │   ├── styles/            # Archivos CSS
-│   │   │   ├── global.css     # Estilos globales
-│   │   │   ├── variables.css  # Variables CSS (colores, fuentes)
-│   │   │   └── responsive.css # Media queries
-│   │   ├── utils/             # Utilidades y helpers
-│   │   │   ├── api.js         # Configuración de API
-│   │   │   ├── constants.js   # Constantes de la aplicación
-│   │   │   └── helpers.js     # Funciones auxiliares
-│   │   ├── hooks/             # Custom hooks de React
-│   │   ├── context/           # Context providers (tema, idioma)
-│   │   ├── images/            # Recursos de imágenes
-│   │   ├── App.js             # Componente raíz
-│   │   ├── index.js           # Punto de entrada
-│   │   └── App.css            # Estilos del componente App
-│   ├── package.json           # Dependencias del frontend
-│   └── README.md              # Documentación del cliente
+│   │   ├── styles/            # 🎨 Archivos CSS
+│   │   ├── utils/             # 🛠️ Utilidades y helpers
+│   │   ├── hooks/             # ⚛️ Custom hooks de React
+│   │   └── context/           # 🌐 Context providers
+│   └── package.json           # Dependencias del frontend
 │
-├── server/                     # Backend - API Node.js
-│   ├── models/                # Modelos de MongoDB
+├── server/                     # ⚙️ Backend - API Node.js
+│   ├── models/                # 🗂️ Modelos de MongoDB
 │   │   ├── Pet.js             # Modelo de mascota
 │   │   ├── Adoption.js        # Modelo de adopción
 │   │   └── User.js            # Modelo de usuario
-│   ├── routes/                # Rutas de la API
+│   ├── routes/                # 🛤️ Rutas de la API
 │   │   ├── pets.js            # Endpoints de mascotas
 │   │   ├── adoptions.js       # Endpoints de adopciones
 │   │   └── users.js           # Endpoints de usuarios
-│   ├── middleware/            # Middlewares personalizados
-│   │   ├── auth.js            # Autenticación
-│   │   ├── cors.js            # Configuración CORS
-│   │   └── validation.js      # Validación de datos
-│   ├── controllers/           # Lógica de controladores
-│   │   ├── petController.js   # Controlador de mascotas
-│   │   ├── adoptionController.js # Controlador de adopciones
-│   │   └── userController.js  # Controlador de usuarios
-│   ├── config/                # Configuraciones
-│   │   ├── database.js        # Configuración de MongoDB
-│   │   └── environment.js     # Variables de entorno
-│   ├── uploads/               # Archivos subidos (imágenes)
-│   ├── utils/                 # Utilidades del servidor
-│   │   ├── imageUpload.js     # Manejo de subida de imágenes
-│   │   └── emailService.js    # Servicio de emails
-│   ├── server.js              # Archivo principal del servidor
-│   ├── package.json           # Dependencias del backend
-│   ├── .env                   # Variables de entorno (no incluido en git)
-│   └── .env.example           # Ejemplo de variables de entorno
-│
-├── .gitignore                 # Archivos ignorados por git
-├── README.md                  # Documentación principal
-└── LICENSE                    # Licencia del proyecto
+│   ├── middleware/            # 🛡️ Middlewares personalizados
+│   ├── controllers/           # 🎮 Lógica de controladores
+│   ├── config/                # ⚙️ Configuraciones
+│   └── utils/                 # 🛠️ Utilidades del servidor
+└── README.md                  # 📖 Documentación principal
 ```
 
-### Descripción de Directorios Principales:
+---
 
--   **`client/`**: Frontend construido con React que maneja la interfaz de usuario
--   **`server/`**: Backend construido con Node.js, Express y MongoDB que maneja la lógica del servidor y la base de datos
+## ⚡ Instalación y Configuración
 
-## Instalación y Configuración
+### 📋 **Prerequisitos**
+- **Node.js** (versión 16 o superior)
+- **npm** o **yarn**
+- **MongoDB Atlas** o instancia local de MongoDB
+- **Git** para clonar el repositorio
 
-Para ejecutar la aplicación en tu máquina local, sigue estos pasos.
+### 🚀 **Pasos de Instalación**
 
-### Prerequisitos
+#### 1️⃣ **Clonar el Repositorio**
+```bash
+git clone https://github.com/AlexanderA31/bootcamp.git
+cd bootcamp
+```
 
--   Node.js y npm instalados en tu máquina.
--   Una base de datos MongoDB (puedes usar una instancia local o un servicio en la nube como MongoDB Atlas).
+#### 2️⃣ **Configuración del Backend**
+```bash
+# Navegar al directorio del servidor
+cd server
 
-### Configuración del Backend
+# Instalar dependencias
+npm install
 
-1.  **Navega al directorio del servidor:**
-    ```bash
-    cd server
-    ```
+# Crear archivo de variables de entorno
+cp .env.example .env
+# Editar .env con tus configuraciones
 
-2.  **Instala las dependencias:**
-    ```bash
-    npm install
-    ```
+# Iniciar el servidor de desarrollo
+npm run dev
+# o
+npx nodemon server
+```
 
-3.  **Crea un archivo `.env`:**
-    Crea un archivo llamado `.env` en el directorio `server` y agrega tu cadena de conexión de MongoDB:
-    ```
-    mongooseURL=tu_cadena_de_conexion_mongodb
-    CLOUDINARY_CLOUD_NAME=
-    CLOUDINARY_API_KEY=
-    CLOUDINARY_API_SECRET=
-    ```
+#### 3️⃣ **Configuración del Frontend**
+```bash
+# Navegar al directorio del cliente (en otra terminal)
+cd Client
 
-4.  **Inicia el servidor:**
-    Hemos agregado un script de conveniencia para ejecutar el servidor con `nodemon`.
-    ```bash
-    npx nodemon server  
-    ```
+# Instalar dependencias
+npm install
 
-### Configuración del Frontend
+# Crear archivo de variables de entorno
+# Crear .env con las configuraciones necesarias
 
-1.  **Navega al directorio del cliente:**
-    ```bash
-    cd Client
-    ```
+# Iniciar el servidor de desarrollo
+npm start
+```
 
-2.  **Instala las dependencias:**
-    ```bash
-    npm install
-    ```
-    
-3.  **Crea un archivo `.env`:**
-    Crea un archivo llamado `.env` en el directorio `client` y agrega tu cadena de conexión de MongoDB:
-    ```
-    REACT_APP_API_URL=http://localhost:4000
-    REACT_APP_GEMINI_API_URL=
-    ```
+La aplicación estará disponible en:
+- **Frontend**: `http://localhost:3000`
+- **Backend**: `http://localhost:4000`
 
-4.  **Inicia el servidor de desarrollo de React:**
-    ```bash
-    npm start
-    ```
-    La aplicación se abrirá en tu navegador en `http://localhost:3000`.
+---
 
-## Características
+## 🚀 Despliegue
 
-- **Navegación de Mascotas**: Los usuarios pueden explorar mascotas disponibles para adopción
-- **Detalles de Mascotas**: Información detallada sobre cada mascota
-- **Formularios de Adopción**: Sistema para enviar solicitudes de adopción
-- **Panel de Administración**: Gestión de listados de mascotas y solicitudes
-- **Diseño Responsivo**: Interfaz optimizada para dispositivos móviles y desktop
-- **Modo Oscuro**: Alternancia entre temas claro y oscuro
+### 🌐 **Despliegue en Producción**
 
-## Tecnologías Utilizadas
+El proyecto está configurado para despliegue en:
 
-### Frontend
-- React.js
-- React Router
-- CSS3
-- Diseño responsivo
+#### **Frontend (Vercel)**
+1. Conectar repositorio con Vercel
+2. Configurar build command: `npm run build`
+3. Establecer output directory: `build`
+4. Configurar variables de entorno
 
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
+#### **Backend (Render)**
+1. Crear Web Service en Render
+2. Comando de inicio: `node server.js`
+3. Configurar variables de entorno
+4. Establecer versión Node.js (18.x)
+
+#### **Base de Datos (MongoDB Atlas)**
+1. Crear cluster en MongoDB Atlas
+2. Configurar IP whitelisting
+3. Establecer usuarios con permisos
+
+---
+
+## 🔧 Variables de Entorno
+
+### 🖥️ **Backend (.env)**
+```env
+# Base de datos
+mongooseURL=tu_cadena_de_conexion_mongodb
+
+# Cloudinary para imágenes
+CLOUDINARY_CLOUD_NAME=tu_cloud_name
+CLOUDINARY_API_KEY=tu_api_key
+CLOUDINARY_API_SECRET=tu_api_secret
+
+# JWT
+JWT_SECRET=tu_jwt_secret
+
+# Puerto del servidor
+PORT=4000
+```
+
+### 🎨 **Frontend (.env)**
+```env
+# API del backend
+REACT_APP_API_URL=http://localhost:4000
+
+# Gemini API para chatbot
+REACT_APP_GEMINI_API_URL=tu_gemini_api_url
+REACT_APP_GEMINI_API_KEY=tu_gemini_api_key
+```
+
+### 📏 **Estándares de Código**
+- Usar ESLint y Prettier para formateo
+- Seguir convenciones de nomenclatura establecidas
+- Incluir pruebas para nuevas funcionalidades
+- Documentar cambios significativos
+
+---
+
+## 👥 Autores
+
+Este proyecto fue desarrollado por un talentoso equipo de desarrolladores:
+
+| Desarrollador | Rol | GitHub |
+|---------------|-----|---------|
+| **Alexander Ufredo Alegria Chavez** | Full Stack Developer | [@AlexanderA31](https://github.com/AlexanderA31) |
+| **Moises Fernando Alvarez Orellana** | Frontend Developer | |
+| **Ivan De Jesus Vera Yagual** | Backend Developer | |
+| **Angel Abisai Lezama Gutierrez** | DevOps & Database | |
+
+---
+
+## 🛡️ Seguridad
+
+- 🔐 **Autenticación JWT** con expiración configurable
+- 🛡️ **Validación y sanitización** de datos
+- 🚦 **Rate limiting** para endpoints críticos  
+- 🔒 **Hash de contraseñas** con bcrypt
+- 🌐 **Configuración CORS** para dominios permitidos
+
+---
+
+## 📞 Soporte
+
+Si tienes preguntas o necesitas ayuda:
+
+- 📧 Crea un [Issue](https://github.com/AlexanderA31/bootcamp/issues)
+- 🌐 Visita la [aplicación en vivo](https://adopmebootcamp.vercel.app)
+- 📖 Revisa la documentación completa
+
+---
+
+<div align="center">
+
+### 🐾 **¡Ayudemos a las mascotas a encontrar su hogar perfecto!** 🏠
+
+**[🚀 Ver Demo](https://adopmebootcamp.vercel.app)** • **[⭐ Dar Estrella](https://github.com/AlexanderA31/bootcamp)** • **[🐛 Reportar Bug](https://github.com/AlexanderA31/bootcamp/issues)**
+
+---
+
+*Desarrollado con ❤️ para el Bootcamp, ojala ganemos ;c*
+
+</div>
 
