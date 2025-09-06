@@ -7,15 +7,17 @@ import ChatMessage from "./ChatMessage";
 import { companyInfo } from "./companyInfo";
 
 const ChatBot = () => {
-  const [chatHistory, setChatHistory] = useState([{hideInChat:true,role:"model",text:companyInfo}]);
+  const [chatHistory, setChatHistory] = useState([
+    { hideInChat: true, role: "model", text: companyInfo },
+  ]);
   const [showChatBot, setShowChatBot] = useState([]);
   const chatBodyRef = useRef();
 
   const generateBotResponse = async (history) => {
-    const updateHistory = (text,isError=false) => {
+    const updateHistory = (text, isError = false) => {
       setChatHistory((prev) => [
         ...prev.filter((msg) => msg.text !== "Thinking..."),
-        { role: "model", text,isError },
+        { role: "model", text, isError },
       ]);
     };
     history = history.map(({ role, text }) => ({
@@ -40,15 +42,17 @@ const ChatBot = () => {
       const data = await response.json();
 
       if (!response.ok)
-        throw new Error(data.error.message|| "Error en la respuesta de la API");
+        throw new Error(
+          data.error.message || "Error en la respuesta de la API"
+        );
 
       const botText = data.candidates?.[0]?.content?.parts?.[0]?.text
         .replace(/\*\*(.*?)\*\*/g, "$1")
         .trim();
-      
+
       updateHistory(botText);
     } catch (error) {
-      updateHistory(error.message || "Ha ocurrido un error",true);
+      updateHistory(error.message || "Ha ocurrido un error", true);
     }
   };
 
@@ -88,7 +92,9 @@ const ChatBot = () => {
           <div className="message bot-message">
             <ChatBotIcon />
             <p className="message-text">
-              Hello! I'm your friendly chatbot. How can I assist you today?
+              👋 ¡Hola! Bienvenido. Esta es una plataforma para ayudar a que más
+              mascotas encuentren un hogar. Si estás buscando adoptar o publicar
+              una mascota, estoy aquí para ayudarte.
             </p>
           </div>
           {chatHistory.map((chat, index) => (

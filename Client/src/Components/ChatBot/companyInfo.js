@@ -20,6 +20,6 @@ Roles:
 - Publicador: crea publicaciones y gestiona solicitudes.
 - Administrador: verifica publicadores y modera contenido.
 
-Objetivo del MVP:
+
 Ofrecer un proceso de adopción más rápido, transparente y seguro, facilitando adopciones responsables y liberando espacio para ayudar a más animales.
 `;
