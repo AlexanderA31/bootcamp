@@ -53,7 +53,7 @@ const ChatBot = () => {
   const generateBotResponse = async (history) => {
     const updateHistory = (text, isError = false) => {
       setChatHistory((prev) => [
-        ...prev.filter((msg) => msg.text !== "Thinking..."),
+        ...prev.filter((msg) => msg.text !== "Pensando..."),
         { role: "model", text, isError },
       ]);
     };
