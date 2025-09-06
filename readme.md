@@ -47,7 +47,6 @@ Una aplicación web full-stack con chatbot inteligente para la gestión integral
 - 🗑️ **Administración de Contenido**: Eliminar y editar listados de mascotas
 
 ### 🔒 **Características Técnicas**
-- 🔐 **Autenticación JWT**: Sistema seguro de login y registro
 - 🖼️ **Gestión de Imágenes**: Integración con Cloudinary para almacenamiento
 - ⚡ **Rendimiento Optimizado**: Carga lazy de imágenes y componentes
 - 🛡️ **Validación Robusta**: Validación tanto en frontend como backend
