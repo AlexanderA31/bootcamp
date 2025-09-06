@@ -257,12 +257,12 @@ REACT_APP_GEMINI_API_URL=tu_gemini_api_url
 
 Este proyecto fue desarrollado por un talentoso equipo de desarrolladores:
 
-| Desarrollador | Rol | GitHub |
-|---------------|-----|---------|
-| **Alexander Ufredo Alegria Chavez** | Full Stack Developer | [@AlexanderA31](https://github.com/AlexanderA31) |
-| **Moises Fernando Alvarez Orellana** | Frontend Developer | |
-| **Ivan De Jesus Vera Yagual** | Backend Developer | |
-| **Angel Abisai Lezama Gutierrez** | DevOps & Database | |
+| Desarrollador | Rol | 
+|---------------|-----|
+| **Alexander Ufredo Alegria Chavez** | Full Stack Developer | 
+| **Moises Fernando Alvarez Orellana** | Frontend Developer | 
+| **Ivan De Jesus Vera Yagual** | Backend Developer | 
+| **Angel Abisai Lezama Gutierrez** | DevOps & Database | 
 
 ---
 
