@@ -26,7 +26,7 @@ const ChatForm = ({ chatHistory,setChatHistory,generateBotResponse}) => {
       <input
         ref={inputRef}
         type="text"
-        placeholder="Message..."
+        placeholder="Mensaje..."
         className="message-input"
         required
       />
