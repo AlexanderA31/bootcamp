@@ -1,4 +1,4 @@
-# 🐾 AdopMe - Plataforma de Adopción de Mascotas - MERN
+## 🐾 AdopMe - Plataforma de Adopción de Mascotas - MERN
 
 Una aplicación web full-stack con chatbot inteligente para la gestión integral de mascotas y procesos de adopción. Facilita la conexión entre mascotas que necesitan un hogar y familias dispuestas a adoptar.
 
