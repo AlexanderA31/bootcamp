@@ -30,7 +30,11 @@ const PetSchema = new schema({
         type: String,
         required: true
     },
-    filename: {
+    imageUrl: {
+        type: String,
+        required: true
+    },
+    public_id: {
         type: String,
         required: true
     },

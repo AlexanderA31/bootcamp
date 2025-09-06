@@ -1,11 +1,10 @@
 const Pet = require('../Model/PetModel');
-const fs = require('fs');
-const path = require('path');
+const cloudinary = require('../config/cloudinary');
 
 const postPetRequest = async (req, res) => {
   try {
     const { name, age, area, justification, email, phone, type } = req.body;
-    const { filename } = req.file;
+    const { path, filename } = req.file;
 
     const pet = await Pet.create({
       name,
@@ -15,7 +14,8 @@ const postPetRequest = async (req, res) => {
       email,
       phone,
       type,
-      filename,
+      imageUrl: path,
+      public_id: filename,
       status: 'Pending'
     });
 
@@ -61,11 +61,10 @@ const deletePost = async (req, res) => {
     if (!pet) {
       return res.status(404).json({ error: 'Mascota no encontrada' });
     }
-    const filePath = path.join(__dirname, '../images', pet.filename);
+    
+    // Delete image from Cloudinary
+    await cloudinary.uploader.destroy(pet.public_id);
 
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath);
-    }
     res.status(200).json({ message: 'Mascota eliminada exitosamente' });
   } catch (err) {
     res.status(500).json({ error: err.message });

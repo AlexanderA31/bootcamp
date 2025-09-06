@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const path = require('path');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('../config/cloudinary');
 const { postPetRequest, approveRequest, deletePost, allPets } = require('../Controller/PetController');
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../images'));
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'pets',
+    format: async (req, file) => 'png', // supports promises as well
+    public_id: (req, file) => Date.now() + '-' + Math.round(Math.random() * 1E9),
   },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname));
-  }
 });
 
 const upload = multer({ storage: storage });
