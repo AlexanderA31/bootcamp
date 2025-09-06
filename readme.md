@@ -234,11 +234,6 @@ CLOUDINARY_CLOUD_NAME=tu_cloud_name
 CLOUDINARY_API_KEY=tu_api_key
 CLOUDINARY_API_SECRET=tu_api_secret
 
-# JWT
-JWT_SECRET=tu_jwt_secret
-
-# Puerto del servidor
-PORT=4000
 ```
 
 ### 🎨 **Frontend (.env)**
@@ -248,7 +243,6 @@ REACT_APP_API_URL=http://localhost:4000
 
 # Gemini API para chatbot
 REACT_APP_GEMINI_API_URL=tu_gemini_api_url
-REACT_APP_GEMINI_API_KEY=tu_gemini_api_key
 ```
 
 ### 📏 **Estándares de Código**
