@@ -1,10 +1,11 @@
 /* General Styles */
 .navbar {
   width: 100%;
-  background-color: white;
+  background-color: var(--nav-background);
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   position: relative;
   z-index: 10;
+  transition: background-color 0.3s ease;
 }
 
 .navbar-header {
@@ -18,7 +19,8 @@
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  color: black;
+  color: var(--text);
+  transition: color 0.3s ease;
 }
 
 .menu-toggle {
@@ -27,6 +29,12 @@
   border: none;
   cursor: pointer;
   display: none;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+  color: var(--orange);
 }
 
 /* Mobile Menu */
@@ -39,23 +47,32 @@
 
 .navbar-links a {
   text-decoration: none;
-  color: black;
+  color: var(--text);
   font-weight: 500;
   padding: 10px;
   border-radius: 5px;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
 }
 
 .navbar-links a:hover {
-  background-color: #f2f2f2;
+  background-color: var(--orange);
+  color: var(--white);
+  transform: translateY(-2px);
 }
 
 .cta {
-  background-color: orange;
-  color: white !important;
+  background-color: var(--orange) !important;
+  color: var(--white) !important;
   font-weight: bold;
   padding: 10px 20px;
   border-radius: 50px;
+  box-shadow: 0 2px 5px rgba(254, 160, 52, 0.3);
+}
+
+.cta:hover {
+  background-color: var(--hoverorange) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(254, 160, 52, 0.4);
 }
 
 .theme-toggle {
@@ -94,48 +111,138 @@
   width: 18px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
+  background-color: var(--white);
   transition: 0.4s;
   position: absolute;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: var(--orange);
 }
 
 input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--orange);
+}
+
+/* Dark theme specific adjustments */
+.dark .navbar {
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.dark .navbar-links a:hover {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
 /* -------- RESPONSIVE -------- */
 @media (max-width: 768px) {
+  .navbar {
+    position: relative;
+    z-index: 1000;
+  }
+
+  .navbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
   .menu-toggle {
     display: block;
+    order: 1;
+  }
+
+  .logo {
+    order: 2;
+    flex-grow: 1;
+    text-align: center;
   }
 
   .navbar-links {
     display: none;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--white);
     position: absolute;
-    top: 60px;
+    top: 100%;
     left: 0;
     width: 100%;
     padding: 20px 0;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-top: 1px solid var(--nav-link-border);
+    z-index: 999;
+  }
+
+  /* Dark theme mobile menu - fondo sólido */
+  .dark .navbar-links {
+    background-color: var(--darkGrey);
+    box-shadow: 0px 5px 15px rgba(255,255,255,0.1);
+    border-top: 1px solid var(--nav-link-border);
   }
 
   .navbar-links.open {
     display: flex;
+    animation: slideDown 0.3s ease;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .navbar-links a {
-    padding: 15px 0;
-    font-size: 1.2rem;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    margin: 2px 20px;
+    border-radius: 8px;
+    text-align: center;
+    display: block;
+  }
+
+  .cta {
+    margin: 10px 20px !important;
   }
 
   .theme-toggle {
-    margin-top: 10px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 480px) {
+  .navbar-header {
+    padding: 0.8rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.6rem;
+  }
+
+  .navbar-links a {
+    font-size: 1.1rem;
+    padding: 12px 0;
+  }
+
+  .cta {
+    padding: 8px 16px;
+    font-size: 1rem;
   }
 }
