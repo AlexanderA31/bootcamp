@@ -25,9 +25,34 @@ const PostPetSection = () => {
     }
   }, [isSubmitting]);
 
+  // Prevenir scroll cuando el popup está abierto
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showPopup]);
+
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
+
+  // Cerrar popup al presionar Escape
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && showPopup) {
+        togglePopup();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [showPopup]);
 
   const isEmailValid = (email) => {
     const emailPattern = /^[a-zA-Z0-9._-]+@gmail\.com$/;
@@ -118,8 +143,6 @@ const PostPetSection = () => {
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         {/* INFORMACIÓN DE CONTACTO */}
-       
-
         <div className="form-row">
            <h3>Información de Contacto</h3>
           <div className="input-box">
@@ -144,12 +167,9 @@ const PostPetSection = () => {
         </div>
 
         {/* INFORMACIÓN DE LA MASCOTA */}
-      
-
         <div className="form-row">
             <h3>Información de la Mascota</h3>
           <div className="input-box">
-            
             <label>Nombre:</label>
             <input
               type="text"
@@ -238,18 +258,65 @@ const PostPetSection = () => {
         <button type="submit" className="cta-button" disabled={isSubmitting}>
           {isSubmitting ? "Enviando..." : "Enviar su Mascota"}
         </button>
+      </form>
 
-        {showPopup && (
-          <div className="popup">
+      {/* POPUP MEJORADO */}
+      {showPopup && (
+        <>
+          <div 
+            className="popup"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                togglePopup();
+              }
+            }}
+          >
             <div className="popup-content">
-              <h4>Solicitud enviada; nos pondremos en contacto con usted pronto.</h4>
-              <button onClick={togglePopup} className="close-btn">
+              <button 
+                onClick={togglePopup} 
+                className="close-btn"
+                aria-label="Cerrar"
+              >
                 ✕
+              </button>
+              <h4>¡Solicitud enviada exitosamente!</h4>
+              <p style={{ 
+                fontFamily: '"Varela Round", sans-serif',
+                color: 'var(--text)',
+                fontSize: '1.1rem',
+                lineHeight: '1.5',
+                marginBottom: '20px'
+              }}>
+                Nos pondremos en contacto contigo pronto para revisar la información de tu mascota.
+              </p>
+              <button 
+                onClick={togglePopup}
+                style={{
+                  backgroundColor: 'var(--orange)',
+                  color: 'white',
+                  border: 'none',
+                  padding: '12px 25px',
+                  borderRadius: '25px',
+                  fontSize: '1rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.backgroundColor = 'var(--hoverorange)';
+                  e.target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.backgroundColor = 'var(--orange)';
+                  e.target.style.transform = 'translateY(0)';
+                }}
+              >
+                Entendido
               </button>
             </div>
           </div>
-        )}
-      </form>
+        </>
+      )}
     </section>
   );
 };
