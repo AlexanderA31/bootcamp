@@ -1,6 +1,8 @@
 # Plataforma de Adopción de Mascotas
 
-Esta es una aplicación web full-stack para un centro de adopción de mascotas. Permite a los usuarios navegar por las mascotas disponibles, ver detalles sobre ellas y enviar formularios de adopción. También incluye un panel de administración para gestionar los listados de mascotas y las solicitudes de adopción.
+Esta es una aplicación web full-stack para un centro de adopción de mascotas. Permite a los usuarios navegar por las mascotas disponibles, ver detalles sobre ellas y enviar formularios de adopción, cuenta con un chatbot especializado para facilitar la adopcion y consulta de mascotas disponibles, También incluye un panel de administración para gestionar los listados de mascotas y las solicitudes de adopción.
+
+<img width="1607" height="923" alt="Sin título" src="https://github.com/user-attachments/assets/72028752-693b-4bf2-aeb1-130273d85431" />
 
 ## Estructura del Proyecto
 
