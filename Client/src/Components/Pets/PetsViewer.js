@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import AdoptForm from '../AdoptForm/AdoptForm';
 import { formatDistanceToNow } from 'date-fns';
 import { es } from 'date-fns/locale';
-import './PetsViewer.css';
 
 const PetsViewer = (props) => {
   const [showPopup, setShowPopup] = useState(false);
