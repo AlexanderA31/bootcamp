@@ -32,7 +32,7 @@ const ApprovedRequests = () => {
         <p>Cargando...</p>
       ) : (
         requests.length > 0 ? (
-          <PetTable pets={requests} updateTable={fetchRequests} />
+          <PetTable pets={requests} updateTable={fetchRequests} showApproveButton={false} />
         ) : (
           <p>No hay mascotas aprobadas disponibles</p>
         )

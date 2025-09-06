@@ -61,7 +61,10 @@ function AdminNavBar() {
         <h3
           className="logout-btn"
           style={logoutBtnStyle}
-          onClick={() => window.location.reload()}
+          onClick={() => {
+            localStorage.removeItem('isAdmin');
+            window.location.href = '/';
+          }}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)')}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
         >

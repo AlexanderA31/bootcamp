@@ -10,13 +10,50 @@ const ChatBot = () => {
   const [chatHistory, setChatHistory] = useState([
     { hideInChat: true, role: "model", text: companyInfo },
   ]);
-  const [showChatBot, setShowChatBot] = useState([]);
+  const [showChatBot, setShowChatBot] = useState(false);
+  const [pets, setPets] = useState([]);
   const chatBodyRef = useRef();
+
+  const fetchPets = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/approvedPets`);
+      const data = await response.json();
+      if (response.ok) {
+        setPets(data);
+      } else {
+        console.error("Failed to fetch pets:", data.error);
+      }
+    } catch (error) {
+      console.error("Error fetching pets:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPets();
+  }, []);
+
+  useEffect(() => {
+    if (pets.length > 0) {
+      const petsInfo = `
+        Aquí tienes una lista de las mascotas disponibles para adopción:
+        ${pets.map(pet => `
+          - **Nombre:** ${pet.name}
+          - **Edad:** ${pet.age}
+          - **Tipo:** ${pet.type}
+          - **Área:** ${pet.area}
+          - **Justificación:** ${pet.justification}
+        `).join('')}
+        Puedes preguntarme más detalles sobre cualquiera de estas mascotas.
+      `;
+      setChatHistory(prev => [...prev, { hideInChat: true, role: 'model', text: petsInfo }]);
+    }
+  }, [pets]);
+
 
   const generateBotResponse = async (history) => {
     const updateHistory = (text, isError = false) => {
       setChatHistory((prev) => [
-        ...prev.filter((msg) => msg.text !== "Thinking..."),
+        ...prev.filter((msg) => msg.text !== "Pensando..."),
         { role: "model", text, isError },
       ]);
     };
@@ -76,7 +113,7 @@ const ChatBot = () => {
         <div className="chat-header">
           <div className="header-info">
             <ChatBotIcon />
-            <h2 className="logo-text">ChatBot</h2>
+            <h2 className="logo-text">AdopmeBOT</h2>
           </div>
           <button
             onClick={() => setShowChatBot((prev) => !prev)}
@@ -94,7 +131,7 @@ const ChatBot = () => {
             <p className="message-text">
               👋 ¡Hola! Bienvenido. Esta es una plataforma para ayudar a que más
               mascotas encuentren un hogar. Si estás buscando adoptar o publicar
-              una mascota, estoy aquí para ayudarte.
+              una mascota, estoy aquí para ayudarte. También puedes preguntarme sobre las mascotas que tenemos disponibles.
             </p>
           </div>
           {chatHistory.map((chat, index) => (
