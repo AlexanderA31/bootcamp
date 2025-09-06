@@ -17,14 +17,15 @@ const AdminLogin = () => {
   const handleLogin = () => {
     const user = usersData.username === username && usersData.password === password;
     if (user) {
-      setShowErrorMessage(false);
+      localStorage.setItem("isAdmin", "true");
+      window.location.reload();
     } else {
       setShowErrorMessage(true);
     }
   };
 
   const handleClose = () => {
-    console.log("Redirecting to home page...");
+    window.location.href = "/";
   }
 
   const modalOverlayStyle = {

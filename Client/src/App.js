@@ -27,43 +27,52 @@ const App = () => {
   const location = useLocation();
   const isAdmin = localStorage.getItem("isAdmin") === "true";
   const showAdminLogin = location.pathname === '/admin' && !isAdmin;
+  const onAdminPage = location.pathname.startsWith('/admin');
 
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
 
+  const AppRoutes = (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <Home description="Asegúrese de estar completamente preparado para brindar el cuidado y la atención adecuados a su mascota antes de darle la bienvenida a su hogar." />
+            <ChatBot />
+          </>
+        }
+      />
+      <Route
+        path="/servicios"
+        element={<Services />}
+      />
+      
+      <Route
+        path="/mascotas"
+        element={<Pets />}
+      />
+      <Route
+        path="/adoptar"
+        element={<AdoptForm />}
+      />
+      <Route
+        path="/admin"
+        element={isAdmin ? <AdminPanel /> : <Home description="Asegúrese de estar completamente preparado para brindar el cuidado y la atención adecuados a su mascota antes de darle la bienvenida a su hogar." />}
+      />
+    </Routes>
+  );
+
   return (
     <div className="App">
-      <Layout>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home description="Asegúrese de estar completamente preparado para brindar el cuidado y la atención adecuados a su mascota antes de darle la bienvenida a su hogar." />
-                <ChatBot />
-              </>
-            }
-          />
-          <Route
-            path="/servicios"
-            element={<Services />}
-          />
-          
-          <Route
-            path="/mascotas"
-            element={<Pets />}
-          />
-          <Route
-            path="/adoptar"
-            element={<AdoptForm />}
-          />
-          <Route
-            path="/admin"
-            element={isAdmin ? <AdminPanel /> : <Home description="Asegúrese de estar completamente preparado para brindar el cuidado y la atención adecuados a su mascota antes de darle la bienvenida a su hogar." />}
-          />
-        </Routes>
-      </Layout>
+      {onAdminPage && isAdmin ? (
+        AppRoutes
+      ) : (
+        <Layout>
+          {AppRoutes}
+        </Layout>
+      )}
       {showAdminLogin && <AdminLogin />}
     </div>
   );
