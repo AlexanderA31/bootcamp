@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Trash2, Check, X, Loader } from "lucide-react";
 
-const PetTable = ({ pets, updateTable }) => {
+const PetTable = ({ pets, updateTable, showApproveButton }) => {
   const [showJustificationPopup, setShowJustificationPopup] = useState({});
   const [showErrorPopup, setShowErrorPopup] = useState({});
   const [showApproved, setShowApproved] = useState({});
@@ -179,11 +179,11 @@ const PetTable = ({ pets, updateTable }) => {
                   </td>
                   <td style={styles.actionsCell}>
                     <div style={styles.actionButtons}>
-                      <button 
-                        onClick={() => deleteFormsAdoptedPet(pet)} 
+                      <button
+                        onClick={() => handleReject(pet)}
                         disabled={isDeleting[pet._id] || isApproving[pet._id]}
                         style={{
-                          ...styles.deleteButton, 
+                          ...styles.deleteButton,
                           opacity: (isDeleting[pet._id] || isApproving[pet._id]) ? 0.6 : 1,
                           cursor: (isDeleting[pet._id] || isApproving[pet._id]) ? 'not-allowed' : 'pointer'
                         }}
@@ -195,22 +195,24 @@ const PetTable = ({ pets, updateTable }) => {
                           <Trash2 size={16} />
                         )}
                       </button>
-                      <button 
-                        disabled={isDeleting[pet._id] || isApproving[pet._id]} 
-                        onClick={() => handleApprove(pet)}
-                        style={{
-                          ...styles.approveButton, 
-                          opacity: (isDeleting[pet._id] || isApproving[pet._id]) ? 0.6 : 1,
-                          cursor: (isDeleting[pet._id] || isApproving[pet._id]) ? 'not-allowed' : 'pointer'
-                        }}
-                        title="Aprobar mascota"
-                      >
-                        {isApproving[pet._id] ? (
-                          <Loader size={16} className="animate-spin" />
-                        ) : (
-                          <Check size={16} />
-                        )}
-                      </button>
+                      {showApproveButton && (
+                        <button
+                          disabled={isDeleting[pet._id] || isApproving[pet._id]}
+                          onClick={() => handleApprove(pet)}
+                          style={{
+                            ...styles.approveButton,
+                            opacity: (isDeleting[pet._id] || isApproving[pet._id]) ? 0.6 : 1,
+                            cursor: (isDeleting[pet._id] || isApproving[pet._id]) ? 'not-allowed' : 'pointer'
+                          }}
+                          title="Aprobar mascota"
+                        >
+                          {isApproving[pet._id] ? (
+                            <Loader size={16} className="animate-spin" />
+                          ) : (
+                            <Check size={16} />
+                          )}
+                        </button>
+                      )}
                     </div>
                   </td>
                 </tr>

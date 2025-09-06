@@ -113,6 +113,8 @@ const AdminScreen = () => {
     { key: 'adoptedHistory', label: 'Historial de Adopciones', icon: <Clock size={20} /> }
   ]
 
+  const currentScreen = menuItems.find(item => item.key === screen);
+  const title = currentScreen ? currentScreen.label : '';
   return (
     <div className='admin-screen-container' style={containerStyle}>
       <div className='admin-screen-left' style={leftSectionStyle}>
@@ -159,6 +161,14 @@ const AdminScreen = () => {
       </div>
 
       <div className='admin-screen-right' style={rightSectionStyle}>
+      <h2 style={{
+          color: '#333',
+          fontWeight: 'bold',
+          fontSize: '24px',
+          marginBottom: '20px',
+          borderBottom: '2px solid #fbc256',
+          paddingBottom: '10px'
+        }}>{title}</h2>
         {screen === 'postingPet' && <PostingPets />}
         {screen === 'approvedRequests' && <ApprovedRequests />}
         {screen === 'adoptingPet' && <AdoptingRequests />}

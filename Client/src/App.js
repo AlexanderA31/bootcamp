@@ -7,10 +7,13 @@ import Services from "./Components/Services/Services";
 
 import Pets from "./Components/Pets/Pets";
 import AdoptForm from "./Components/AdoptForm/AdoptForm";
+import { useLocation } from "react-router-dom";
+import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import AdminLogin from "./Components/AdminPanel/AdminLogin";
 import "./App.css";
 import { ThemeContext } from './context/ThemeContext';
 import ChatBot from "./Components/ChatBot/ChatBot";
+
 const Layout = ({ children }) => (
   <>
     <Navbar title="Adop.me" />
@@ -21,6 +24,9 @@ const Layout = ({ children }) => (
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
+  const location = useLocation();
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const showAdminLogin = location.pathname === '/admin' && !isAdmin;
 
   useEffect(() => {
     document.body.className = theme;
@@ -28,50 +34,45 @@ const App = () => {
 
   return (
     <div className="App">
-      <Router>
+      <Layout>
         <Routes>
           <Route
             path="/"
             element={
-              <Layout>
+              <>
                 <Home description="Asegúrese de estar completamente preparado para brindar el cuidado y la atención adecuados a su mascota antes de darle la bienvenida a su hogar." />
                 <ChatBot />
-              </Layout>
+              </>
             }
           />
           <Route
             path="/servicios"
-            element={
-              <Layout>
-                <Services />
-              </Layout>
-            }
+            element={<Services />}
           />
           
           <Route
             path="/mascotas"
-            element={
-              <Layout>
-                <Pets />
-              </Layout>
-            }
+            element={<Pets />}
           />
           <Route
             path="/adoptar"
-            element={
-              <Layout>
-                <AdoptForm />
-              </Layout>
-            }
+            element={<AdoptForm />}
           />
           <Route
             path="/admin"
-            element={<AdminLogin />}
+            element={isAdmin ? <AdminPanel /> : <Home description="Asegúrese de estar completamente preparado para brindar el cuidado y la atención adecuados a su mascota antes de darle la bienvenida a su hogar." />}
           />
         </Routes>
-      </Router>
+      </Layout>
+      {showAdminLogin && <AdminLogin />}
     </div>
   );
 };
 
-export default App;
+const Root = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default Root;

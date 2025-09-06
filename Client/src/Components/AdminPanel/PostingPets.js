@@ -32,7 +32,7 @@ const PostingPets = () => {
         <p>Cargando...</p>
       ) : (
         requests.length > 0 ? (
-          <PetTable pets={requests} updateTable={fetchRequests} />
+          <PetTable pets={requests} updateTable={fetchRequests} showApproveButton={true} />
 
         ) : (
           <p>No hay solicitudes disponibles</p>

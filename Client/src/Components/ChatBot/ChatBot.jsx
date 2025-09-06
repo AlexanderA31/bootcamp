@@ -10,7 +10,7 @@ const ChatBot = () => {
   const [chatHistory, setChatHistory] = useState([
     { hideInChat: true, role: "model", text: companyInfo },
   ]);
-  const [showChatBot, setShowChatBot] = useState([]);
+  const [showChatBot, setShowChatBot] = useState(false);
   const chatBodyRef = useRef();
 
   const generateBotResponse = async (history) => {
