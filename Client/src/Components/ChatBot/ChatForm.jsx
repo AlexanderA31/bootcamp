@@ -31,7 +31,7 @@ const ChatForm = ({ chatHistory,setChatHistory,generateBotResponse}) => {
         required
       />
       <button type="submit" className="send-button">
-        <span className="material-symbols-rounded">arrow_upward</span>
+        <span className="material-symbols-rounded">arrow_upward</span> 
       </button>
     </form>
   );
