@@ -37,7 +37,7 @@ const AdoptedCards = (props) => {
     <div className='req-containter'>
       <div className='pet-view-card'>
         <div className='pet-card-pic'>
-          <img src={`${process.env.REACT_APP_API_URL}/images/${props.pet.filename}`} alt={props.pet.name} />
+          <img src={props.pet.imageUrl ||`${process.env.REACT_APP_API_URL}/images/${props.pet.filename}`} alt={props.pet.name} />
         </div>
         <div className='pet-card-details'>
           <h2>{props.pet.name}</h2>

@@ -135,7 +135,7 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
                 <tr key={pet._id} style={styles.bodyRow}>
                   <td style={styles.bodyCell}>
                     <img
-                      src={`${process.env.REACT_APP_API_URL}/images/${pet.filename}`}
+                      src={pet.imageUrl || `${process.env.REACT_APP_API_URL}/images/${pet.filename}`}
                       alt={pet.name}
                       style={styles.petImage}
                       onError={(e) => {

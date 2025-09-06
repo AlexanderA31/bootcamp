@@ -87,7 +87,7 @@ function AdoptForm(props) {
       <div className="form-pet-container">
         <div className="pet-details">
           <div className="pet-pic">
-            <img src={`${process.env.REACT_APP_API_URL}/images/${props.pet.filename}`} alt={props.pet.name} />
+            <img src={props.pet.imageUrl ||`${process.env.REACT_APP_API_URL}/images/${props.pet.filename}`} alt={props.pet.name} />
           </div>
           <div className="pet-info">
             <h2>{props.pet.name}</h2>

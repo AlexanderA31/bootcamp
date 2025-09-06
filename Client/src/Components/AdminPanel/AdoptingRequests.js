@@ -112,7 +112,7 @@ const AdoptingRequests = () => {
           <div className='popup-content'>
             <div className='pet-view-card'>
               <div className='pet-card-pic'>
-                <img src={`${process.env.REACT_APP_API_URL}/images/${selectedPet.filename}`} alt={selectedPet.name} />
+                <img src={selectedPet.imageUrl ||`${process.env.REACT_APP_API_URL}/images/${selectedPet.filename}`} alt={selectedPet.name} />
               </div>
               <div className='pet-card-details'>
                 <h2>{selectedPet.name}</h2>
