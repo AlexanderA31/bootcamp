@@ -107,64 +107,64 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
 
   return (
     <>
-      <div style={styles.tableContainer}>
-        <table style={styles.table}>
+      <div className="table-container">
+        <table className="admin-table">
           <thead>
-            <tr style={styles.headerRow}>
-              <th style={styles.headerCell}>Imagen</th>
-              <th style={styles.headerCell}>Nombre</th>
-              <th style={styles.headerCell}>Tipo</th>
-              <th style={styles.headerCell}>Edad</th>
-              <th style={styles.headerCell}>Ubicación</th>
-              <th style={styles.headerCell}>Correo</th>
-              <th style={styles.headerCell}>Teléfono</th>
-              <th style={{...styles.headerCell, width: '180px', maxWidth: '180px'}}>Justificación</th>
-              <th style={styles.headerCell}>Actualización</th>
-              <th style={styles.headerCell}>Acciones</th>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Edad</th>
+              <th>Ubicación</th>
+              <th>Correo</th>
+              <th>Teléfono</th>
+              <th style={{width: '180px', maxWidth: '180px'}}>Justificación</th>
+              <th>Actualización</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {pets.length === 0 ? (
               <tr>
-                <td colSpan="10" style={styles.emptyState}>
+                <td colSpan="10" className="empty-state">
                   No hay mascotas para mostrar
                 </td>
               </tr>
             ) : (
               pets.map((pet) => (
-                <tr key={pet._id} style={styles.bodyRow}>
-                  <td style={styles.bodyCell}>
+                <tr key={pet._id}>
+                  <td>
                     <img
                       src={pet.imageUrl || `${process.env.REACT_APP_API_URL}/images/${pet.filename}`}
                       alt={pet.name}
-                      style={styles.petImage}
+                      className="pet-image"
                       onError={(e) => {
                         e.target.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><rect width="60" height="60" fill="%23f3f4f6"/><text x="30" y="30" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="%236b7280">Sin imagen</text></svg>';
                       }}
                     />
                   </td>
-                  <td style={styles.bodyCell}>{pet.name || 'Sin nombre'}</td>
-                  <td style={styles.bodyCell}>{pet.type || 'No especificado'}</td>
-                  <td style={styles.bodyCell}>{pet.age || 'No especificado'}</td>
-                  <td style={styles.bodyCell}>{pet.area || 'No especificado'}</td>
-                  <td style={styles.bodyCell}>
-                    <a href={`mailto:${pet.email}`} style={styles.link}>
+                  <td>{pet.name || 'Sin nombre'}</td>
+                  <td>{pet.type || 'No especificado'}</td>
+                  <td>{pet.age || 'No especificado'}</td>
+                  <td>{pet.area || 'No especificado'}</td>
+                  <td>
+                    <a href={`mailto:${pet.email}`} className="table-link">
                       {pet.email || 'No disponible'}
                     </a>
                   </td>
-                  <td style={styles.bodyCell}>
-                    <a href={`tel:${pet.phone}`} style={styles.link}>
+                  <td>
+                    <a href={`tel:${pet.phone}`} className="table-link">
                       {pet.phone || 'No disponible'}
                     </a>
                   </td>
-                  <td style={{...styles.bodyCell, width: '180px', maxWidth: '180px'}}>
-                    <div style={styles.justificationCell}>
+                  <td style={{width: '180px', maxWidth: '180px'}}>
+                    <div className="justification-cell">
                       <span>
                         {truncateText(pet.justification)}
                         {pet.justification && pet.justification.length > 40 && (
                           <span 
                             onClick={() => togglePopup(pet._id, 'justification', showJustificationPopup[pet._id])} 
-                            style={styles.readMoreBtn}
+                            className="read-more-btn"
                           >
                             Leer Más
                           </span>
@@ -172,18 +172,18 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
                       </span>
                     </div>
                   </td>
-                  <td style={styles.bodyCell}>
+                  <td>
                     <time dateTime={pet.updatedAt}>
                       {formatTimeAgo(pet.updatedAt)}
                     </time>
                   </td>
-                  <td style={styles.actionsCell}>
-                    <div style={styles.actionButtons}>
+                  <td className="actions-cell">
+                    <div className="action-buttons">
                       <button
                         onClick={() => handleReject(pet)}
                         disabled={isDeleting[pet._id] || isApproving[pet._id]}
+                        className="delete-button"
                         style={{
-                          ...styles.deleteButton,
                           opacity: (isDeleting[pet._id] || isApproving[pet._id]) ? 0.6 : 1,
                           cursor: (isDeleting[pet._id] || isApproving[pet._id]) ? 'not-allowed' : 'pointer'
                         }}
@@ -199,8 +199,8 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
                         <button
                           disabled={isDeleting[pet._id] || isApproving[pet._id]}
                           onClick={() => handleApprove(pet)}
+                          className="approve-button"
                           style={{
-                            ...styles.approveButton,
                             opacity: (isDeleting[pet._id] || isApproving[pet._id]) ? 0.6 : 1,
                             cursor: (isDeleting[pet._id] || isApproving[pet._id]) ? 'not-allowed' : 'pointer'
                           }}
@@ -226,14 +226,14 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
       {pets.map((pet) => (
         <React.Fragment key={`popups-${pet._id}`}>
           {showJustificationPopup[pet._id] && (
-            <div style={styles.popup}>
-              <div style={styles.popupContent}>
+            <div className="popup">
+              <div className="popup-content">
                 <h4>Justificación:</h4>
                 <p>{pet.justification}</p>
               </div>
               <button 
                 onClick={() => togglePopup(pet._id, 'justification', showJustificationPopup[pet._id])} 
-                style={styles.closeBtn}
+                className="close-btn"
               >
                 Cerrar <X size={16} style={{ marginLeft: '4px' }} />
               </button>
@@ -241,13 +241,13 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
           )}
 
           {showErrorPopup[pet._id] && (
-            <div style={styles.popup}>
-              <div style={styles.popupContent}>
+            <div className="popup">
+              <div className="popup-content">
                 <p>¡Vaya!... Error de Conexión</p>
               </div>
               <button 
                 onClick={() => togglePopup(pet._id, 'error', showErrorPopup[pet._id])} 
-                style={styles.closeBtn}
+                className="close-btn"
               >
                 Cerrar <X size={16} style={{ marginLeft: '4px' }} />
               </button>
@@ -255,8 +255,8 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
           )}
 
           {showApproved[pet._id] && (
-            <div style={styles.popup}>
-              <div style={styles.popupContent}>
+            <div className="popup">
+              <div className="popup-content">
                 <p>Aprobación Exitosa...</p>
                 <p>
                   Por favor, póngase en contacto con el cliente en{' '}
@@ -271,7 +271,7 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
                   togglePopup(pet._id, 'approved', showApproved[pet._id]);
                   updateTable();
                 }} 
-                style={styles.closeBtn}
+                className="close-btn"
               >
                 Cerrar <X size={16} style={{ marginLeft: '4px' }} />
               </button>
@@ -279,8 +279,8 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
           )}
 
           {showDeletedSuccess[pet._id] && (
-            <div style={styles.popup}>
-              <div style={styles.popupContent}>
+            <div className="popup">
+              <div className="popup-content">
                 <p>Eliminado Exitosamente de la Base de Datos...</p>
               </div>
               <button 
@@ -288,7 +288,7 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
                   togglePopup(pet._id, 'deleted', showDeletedSuccess[pet._id]);
                   updateTable();
                 }} 
-                style={styles.closeBtn}
+                className="close-btn"
               >
                 Cerrar <X size={16} style={{ marginLeft: '4px' }} />
               </button>
@@ -298,165 +298,6 @@ const PetTable = ({ pets, updateTable, showApproveButton }) => {
       ))}
     </>
   );
-};
-
-// Estilos actualizados para los botones con iconos
-const styles = {
-  tableContainer: {
-    overflowX: 'auto',
-    backgroundColor: '#fff',
-    borderRadius: '12px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    margin: '16px 0'
-  },
-  
-  table: {
-    width: '100%',
-    borderCollapse: 'collapse',
-    fontFamily: 'Arial, sans-serif',
-    fontSize: '14px',
-    minWidth: '1000px'
-  },
-  
-  headerRow: {
-    background: '#f9f9f9',
-    textAlign: 'left'
-  },
-  
-  headerCell: {
-    padding: '12px',
-    fontWeight: 'bold',
-    borderBottom: '2px solid #ddd'
-  },
-  
-  bodyRow: {
-    borderBottom: '1px solid #eee'
-  },
-  
-  bodyCell: {
-    padding: '12px',
-    verticalAlign: 'middle'
-  },
-  
-  emptyState: {
-    textAlign: 'center',
-    padding: '40px',
-    color: '#666',
-    fontStyle: 'italic'
-  },
-  
-  petImage: {
-    width: '50px',
-    height: '50px',
-    borderRadius: '8px',
-    objectFit: 'cover'
-  },
-  
-  link: {
-    color: '#3498db',
-    textDecoration: 'none'
-  },
-  
-  justificationCell: {
-    maxWidth: '180px',
-    minWidth: '150px',
-    wordBreak: 'break-all',
-    overflowWrap: 'break-word',
-    whiteSpace: 'normal',
-    overflow: 'hidden',
-    display: 'block',
-    lineHeight: '1.4'
-  },
-  
-  readMoreBtn: {
-    color: '#3498db',
-    cursor: 'pointer',
-    marginLeft: '4px',
-    textDecoration: 'underline'
-  },
-  
-  actionsCell: {
-    textAlign: 'end',
-    paddingRight: '20px'
-  },
-  
-  actionButtons: {
-    display: 'flex',
-    gap: '8px',
-    justifyContent: 'flex-end'
-  },
-  
-  deleteButton: {
-    padding: '8px',
-    background: '#e74c3c',
-    color: 'white',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: '36px',
-    minHeight: '36px',
-    transition: 'all 0.2s ease'
-  },
-  
-  approveButton: {
-    padding: '8px',
-    background: '#2ecc71',
-    color: 'white',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: '36px',
-    minHeight: '36px',
-    transition: 'all 0.2s ease'
-  },
-  
-
-  popup: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1000,
-    flexDirection: 'column'
-  },
-  
-  popupContent: {
-    background: '#fff',
-    padding: '20px',
-    borderRadius: '8px',
-    width: '400px',
-    maxWidth: '90%',
-    textAlign: 'center',
-    wordWrap: 'break-word',
-    wordBreak: 'break-word',
-    overflowWrap: 'break-word',
-    maxHeight: '70vh',
-    overflowY: 'auto'
-  },
-  
-  closeBtn: {
-    marginTop: '12px',
-    padding: '8px 16px',
-    background: '#3498db',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '4px'
-  }
 };
 
 export default PetTable;

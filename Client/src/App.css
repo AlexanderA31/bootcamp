@@ -2050,3 +2050,325 @@ select {
     box-sizing: border-box;
   }
 }
+/* Estilos para centrar la sección de planificación en móvil */
+
+/* Ajustes generales para la sección de planificación */
+.planning-container {
+    margin: 40px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Centrar texto */
+    padding: 0 20px; /* Añadir padding lateral */
+}
+
+.planning-container h1 {
+    margin-top: 15px;
+    color: var(--text);
+    border-bottom: 3px solid var(--text);
+    padding-bottom: 8px;
+    text-align: center; /* Asegurar que el título esté centrado */
+}
+
+/* Estilos responsivos para móvil */
+@media (max-width: 768px) {
+    .planning-container {
+        padding: 0 15px; /* Más padding en móvil */
+        margin: 30px 0px 0px 0px;
+    }
+    
+    .planning-container h1 {
+        font-size: 28px; /* Reducir tamaño de fuente en móvil */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .boxes-container {
+        padding: 0px 20px; /* Reducir padding lateral */
+        display: flex;
+        flex-direction: column; /* Apilar tarjetas verticalmente */
+        align-items: center; /* Centrar las tarjetas */
+        justify-content: center;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+    
+    .card-container {
+        max-width: 100%; /* Usar todo el ancho disponible */
+        width: 100%;
+        margin: 15px 0; /* Margin vertical solamente */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center; /* Centrar texto dentro de las tarjetas */
+    }
+    
+    .card-container h2 {
+        color: var(--orange);
+        text-align: center;
+        padding: 20px 0px 20px 0px;
+        font-size: 20px; /* Ajustar tamaño de fuente */
+    }
+    
+    .card-container p {
+        text-align: center;
+        font-size: 15px;
+        color: var(--text);
+        line-height: 1.4; /* Mejorar legibilidad */
+        padding: 0 10px; /* Padding interno */
+    }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .planning-container {
+        padding: 0 10px;
+        margin: 20px 0px 0px 0px;
+    }
+    
+    .planning-container h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    .boxes-container {
+        padding: 0px 10px;
+        margin-bottom: 40px;
+    }
+    
+    .card-container {
+        margin: 10px 0;
+        padding: 20px 15px; /* Más padding interno */
+    }
+    
+    .card-container h2 {
+        font-size: 18px;
+        padding: 15px 0px 15px 0px;
+    }
+    
+    .card-container p {
+        font-size: 14px;
+        padding: 0 5px;
+    }
+    
+    .card-button {
+        margin-top: 30px;
+        width: 100px;
+        height: 38px;
+        font-size: 14px;
+    }
+}
+/* ==================== ESTILOS PARA POPUP CORREGIDO ==================== */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.popup-modal {
+  background: var(--background);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  animation: popupSlideIn 0.3s ease-out;
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.popup-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 15px 0 15px;
+}
+
+.popup-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.popup-close-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.popup-body {
+  padding: 0 30px 30px 30px;
+  text-align: center;
+}
+
+.popup-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.popup-title {
+  color: var(--text);
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+}
+
+.popup-message {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 25px 0;
+}
+
+.popup-ok-btn {
+  background: var(--orange);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.popup-ok-btn:hover {
+  background: var(--hoverorange);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+/* Responsive para el nuevo popup */
+@media (max-width: 768px) {
+  .popup-modal {
+    max-width: 350px;
+    margin: 20px;
+  }
+
+  .popup-body {
+    padding: 0 20px 25px 20px;
+  }
+
+  .popup-title {
+    font-size: 20px;
+  }
+
+  .popup-message {
+    font-size: 14px;
+  }
+}
+
+
+/* Texto de información de las mascotas en modo oscuro */
+.pet-info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+    font-family: "Varela Round", sans-serif;
+    color: var(--text); /* Cambiar de var(--darkGrey) a var(--text) para modo oscuro */
+    font-size: 1rem;
+}
+
+.pet-info-label {
+    font-weight: bold;
+    margin-right: 5px;
+    color: var(--orange); /* Mantener naranja para las etiquetas */
+}
+
+.pet-info-value {
+    color: var(--text); /* Cambiar para que use la variable de texto */
+    background: rgba(255, 234, 210, 0.4);
+    border-radius: 8px;
+    padding: 2px 8px;
+    margin-left: 3px;
+}
+
+/* Para las tarjetas del panel de administración específicamente */
+.pet-card-details p {
+    font-family: "Varela Round", sans-serif;
+    color: var(--text); /* Cambiar de color fijo a variable */
+}
+
+.pet-card-details h2 {
+    font-family: "Varela Round", sans-serif;
+    color: var(--orange); /* Mantener naranja para los nombres */
+    text-align: center;
+    margin: 5px 0;
+}
+
+.form-card-details p {
+    font-family: "Varela Round", sans-serif;
+    color: var(--text); /* Cambiar de color fijo a variable */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.form-card-details h2 {
+    font-family: "Varela Round", sans-serif;
+    color: var(--orange); /* Mantener naranja para los nombres */
+    text-align: center;
+    margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Asegurar que el contenido del popup también funcione en modo oscuro */
+.popup-content {
+    background: var(--background); /* Usar variable de fondo */
+    color: var(--text); /* Usar variable de texto */
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-height: 70vh;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1001;
+}
+
+.popup-content p {
+    color: var(--text); /* Asegurar que el texto del popup sea visible en modo oscuro */
+}
+
+.popup-content h4 {
+    color: var(--text); /* Asegurar que los títulos del popup sean visible en modo oscuro */
+}
+
+/* Ajustar el fondo del valor de información para modo oscuro */
+.dark .pet-info-value {
+    background: rgba(255, 160, 52, 0.2); /* Fondo más sutil en modo oscuro */
+    color: var(--text);
+}

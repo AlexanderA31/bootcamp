@@ -54,9 +54,15 @@
   background-color: var(--background);
 }
 
+.dark .login-container {
+  border-color: #444;
+  background-color: var(--card-background);
+}
+
 .login-container h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
+  color: var(--text);
 }
 
 .login-container input {
@@ -65,6 +71,13 @@
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.dark .login-container input {
+  border-color: #444;
+  background-color: var(--card-background);
 }
 
 .login-container button {
@@ -92,6 +105,8 @@
   padding: 50px 0;
   position: relative; /* Crear contexto de apilamiento */
   z-index: 1; /* Menor que el navbar */
+  background-color: var(--background);
+  min-height: calc(100vh - 200px);
 }
 
 .admin-screen-left {
@@ -101,10 +116,19 @@
   max-width: 20vw;
   min-width: 20vw;
   padding: 25px;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dark .admin-screen-left {
+  background-color: var(--nav-background-dark);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .admin-screen-left h3 {
   margin-bottom: 20px;
+  color: var(--text);
 }
 
 .admin-screen-left p {
@@ -118,10 +142,116 @@
   justify-content: flex-start;
   padding-bottom: 10px;
   border-bottom: 2px solid #fbc256;
+  background: none;
+  border: none;
+  transition: opacity 0.2s ease;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 10px;
 }
 
 .admin-screen-left p:hover {
   opacity: 0.8;
+  background-color: rgba(251, 194, 86, 0.1);
+}
+
+.dark .admin-screen-left p:hover {
+  background-color: rgba(251, 194, 86, 0.15);
+}
+
+/* Estilos para los botones del menú */
+.menu-button {
+  background: #fbc256 !important;
+  color: white !important;
+  border: 2px solid #333 !important;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.dark .menu-button {
+  border-color: #555 !important;
+}
+
+.menu-item-button {
+  font-weight: bold;
+  font-size: 16px;
+  color: #fbc256 !important;
+  font-family: "Varela Round", sans-serif;
+  cursor: pointer;
+  margin: 10px 0;
+  padding: 12px 16px;
+  border-bottom: 2px solid #fbc256;
+  width: 100%;
+  text-align: left;
+  background: none !important;
+  border: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 8px;
+}
+
+.menu-item-button:hover {
+  background-color: rgba(251, 194, 86, 0.1) !important;
+}
+
+.dark .menu-item-button:hover {
+  background-color: rgba(251, 194, 86, 0.2) !important;
+}
+
+.menu-item-button.active {
+  background-color: rgba(251, 194, 86, 0.2) !important;
+}
+
+.dark .menu-item-button.active {
+  background-color: rgba(251, 194, 86, 0.3) !important;
+}
+
+.icon-button {
+  color: #fbc256 !important;
+  border: 2px solid #333;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  width: 100%;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+}
+
+.dark .icon-button {
+  border-color: #555;
+}
+
+.icon-button:hover {
+  background: rgba(251, 194, 86, 0.1) !important;
+}
+
+.dark .icon-button:hover {
+  background: rgba(251, 194, 86, 0.2) !important;
+}
+
+.icon-button.active {
+  background: rgba(251, 194, 86, 0.2) !important;
+}
+
+.dark .icon-button.active {
+  background: rgba(251, 194, 86, 0.3) !important;
 }
 
 .admin-screen-right {
@@ -131,6 +261,17 @@
   min-width: 80vw;
   position: relative; /* Crear contexto para elementos internos */
   overflow: visible; /* Permitir que el contenido sea visible */
+  background-color: var(--background);
+}
+
+/* Título de sección en tema oscuro */
+.section-title {
+  color: var(--text) !important;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #fbc256;
+  padding-bottom: 10px;
 }
 
 /* Estilos específicos para el dropdown del filtro */
@@ -142,12 +283,12 @@
 .req-filter-selection {
   position: relative;
   z-index: 10;
-  background: white;
+  background: var(--card-background);
   border: 2px solid #fbc256;
   border-radius: 5px;
   padding: 8px 12px;
   font-size: 14px;
-  color: #333;
+  color: var(--text);
   outline: none;
   cursor: pointer;
   min-width: 200px;
@@ -156,6 +297,152 @@
 .req-filter-selection:focus {
   border-color: #e0a040;
   box-shadow: 0 0 0 3px rgba(251, 194, 86, 0.2);
+}
+
+/* Contenedores de mascotas y formularios */
+.pet-container {
+  background-color: var(--background);
+  padding: 20px 0;
+}
+
+.form-container {
+  background-color: var(--background);
+  margin-bottom: 30px;
+}
+
+.clickable-pet-name {
+  color: var(--text) !important;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  border-left: 4px solid #fbc256;
+}
+
+.clickable-pet-name:hover {
+  background-color: var(--hover-background, rgba(251, 194, 86, 0.1));
+}
+
+.form-child-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+/* Estilos para las tarjetas de mascotas */
+.req-containter {
+  margin-bottom: 20px;
+}
+
+.pet-view-card {
+  display: flex;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color, #e0e0e0);
+}
+
+.dark .pet-view-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-color: #444;
+}
+
+
+
+.pet-card-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pet-card-details, .form-card-details {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--card-background);
+}
+
+.pet-card-details h2, .form-card-details h2 {
+  margin: 0 0 15px 0;
+  color: var(--text);
+  font-size: 1.5rem;
+}
+
+.pet-card-details p, .form-card-details p {
+  margin: 8px 0;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.pet-card-details b, .form-card-details b {
+  color: var(--text);
+}
+
+.read-more-btn {
+  color: #3498db;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+
+.read-more-btn:hover {
+  color: #2980b9;
+}
+
+/* Botones de acción */
+.app-rej-btn, .show-interest-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  align-items: stretch;
+  justify-content: center;
+  min-width: 120px;
+}
+
+.app-rej-btn button, .show-interest-btn button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.app-rej-btn button:first-child {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.app-rej-btn button:first-child:hover {
+  background-color: #c0392b;
+}
+
+.app-rej-btn button:not(:first-child) {
+  background-color: #3498db;
+  color: white;
+}
+
+.app-rej-btn button:not(:first-child):hover {
+  background-color: #2980b9;
+}
+
+.app-rej-btn button:last-child {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.app-rej-btn button:last-child:hover {
+  background-color: #27ae60;
+}
+
+.app-rej-btn button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Asegurar que los popups estén correctamente posicionados */
@@ -174,7 +461,8 @@
 }
 
 .popup-content {
-  background: #fff;
+  background: var(--card-background);
+  color: var(--text);
   padding: 20px;
   border-radius: 8px;
   width: 400px;
@@ -187,6 +475,24 @@
   overflow-y: auto;
   position: relative;
   z-index: 1001;
+  border: 1px solid var(--border-color, #e0e0e0);
+}
+
+.dark .popup-content {
+  border-color: #444;
+}
+
+.popup-content h2, .popup-content h4 {
+  color: var(--text);
+  margin-top: 0;
+}
+
+.popup-content p {
+  color: var(--text);
+}
+
+.popup-content a {
+  color: #3498db;
 }
 
 .close-btn {
@@ -201,6 +507,170 @@
   align-items: center;
   gap: 4px;
 }
+
+/* Estilos para las tablas en tema oscuro */
+.table-container {
+  overflow-x: auto;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 16px 0;
+}
+
+.dark .table-container {
+  background-color: var(--nav-background-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  min-width: 1000px;
+  background-color: var(--card-background);
+}
+
+.dark .admin-table {
+  background-color: var(--nav-background-dark);
+  color: var(--text);
+}
+
+.admin-table thead tr {
+  background: var(--background);
+  text-align: left;
+}
+
+.dark .admin-table thead tr {
+  background: #2a2a2a;
+}
+
+.admin-table th {
+  padding: 12px;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  color: var(--text);
+}
+
+.dark .admin-table th {
+  border-bottom-color: #444;
+}
+
+.admin-table tbody tr {
+  border-bottom: 1px solid #eee;
+  background-color: var(--card-background);
+}
+
+.dark .admin-table tbody tr {
+  border-bottom-color: #333;
+  background-color: var(--nav-background-dark);
+}
+
+.admin-table tbody tr:hover {
+  background-color: var(--hover-background, rgba(251, 194, 86, 0.05));
+}
+
+.dark .admin-table tbody tr:hover {
+  background-color: rgba(251, 194, 86, 0.1);
+}
+
+.admin-table td {
+  padding: 12px;
+  vertical-align: middle;
+  color: var(--text);
+}
+
+.admin-table .pet-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.admin-table .table-link {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.admin-table .table-link:hover {
+  text-decoration: underline;
+}
+
+.admin-table .justification-cell {
+  max-width: 180px;
+  min-width: 150px;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  white-space: normal;
+  overflow: hidden;
+  display: block;
+  line-height: 1.4;
+}
+
+.admin-table .read-more-btn {
+  color: #3498db;
+  cursor: pointer;
+  margin-left: 4px;
+  text-decoration: underline;
+}
+
+.admin-table .actions-cell {
+  text-align: end;
+  padding-right: 20px;
+}
+
+.admin-table .action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.admin-table .delete-button {
+  padding: 8px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  transition: all 0.2s ease;
+}
+
+.admin-table .delete-button:hover {
+  background: #c0392b;
+}
+
+.admin-table .approve-button {
+  padding: 8px;
+  background: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  transition: all 0.2s ease;
+}
+
+.admin-table .approve-button:hover {
+  background: #27ae60;
+}
+
+.admin-table .empty-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--text);
+  font-style: italic;
+  opacity: 0.7;
+}
+
 /* ==================== RESPONSIVE ADMIN PANEL - AGREGAR AL FINAL ==================== */
 
 /* Ajustes generales */
@@ -211,57 +681,6 @@
 .login-container input {
     font-size: 16px !important;
 }
-
-/* Medium screens (tablets) */
-@media (max-width: 1024px) {
-    .navbar {
-        padding: 8px 15px;
-    }
-    
-    .navbar-brand {
-        font-size: 20px;
-    }
-    
-    .navbar-time {
-        font-size: 14px;
-    }
-    
-    .admin-screen-container {
-        flex-direction: column;
-        padding: 20px 15px;
-        gap: 15px;
-    }
-    
-    .admin-screen-left {
-        width: 100%;
-        min-width: 100%;
-        max-width: 100%;
-        order: 1;
-    }
-    
-    .admin-screen-right {
-        width: 100%;
-        min-width: 100%;
-        max-width: 100%;
-        border-left: none;
-        border-top: 3px solid #fbc256;
-        padding: 20px 0;
-        order: 2;
-    }
-    
-    .form-child-container {
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .pet-view-card {
-        max-width: 100%;
-        width: 100%;
-        margin: 10px 0;
-    }
-}
-
 /* Small screens (mobile) */
 @media (max-width: 768px) {
     .navbar {

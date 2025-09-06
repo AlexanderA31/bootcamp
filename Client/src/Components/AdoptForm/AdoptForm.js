@@ -98,7 +98,7 @@ function AdoptForm(props) {
               <b>Edad:</b> {props.pet.age}
             </p>
             <p>
-              <b>Ubicación:</b> {props.pet.location}
+              <b>Ubicación:</b> {props.pet.area}
             </p>
           </div>
         </div>

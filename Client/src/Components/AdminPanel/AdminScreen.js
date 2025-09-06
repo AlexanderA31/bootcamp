@@ -27,7 +27,6 @@ const AdminScreen = () => {
     minWidth: isMenuOpen ? '340px' : '60px',
     padding: '25px 10px',
     transition: 'all 0.3s ease',
-    backgroundColor: '#f8f9fa',
     borderRadius: '12px',
     boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
     overflow: 'hidden'
@@ -36,7 +35,7 @@ const AdminScreen = () => {
   const menuButtonStyle = {
     background: '#fbc256',
     color: 'white',
-    border: '2px solid black',
+    border: '2px solid #333',
     padding: '10px 15px',
     borderRadius: '10px',
     cursor: 'pointer',
@@ -52,7 +51,7 @@ const AdminScreen = () => {
   const iconButtonStyle = (isActive) => ({
     background: isActive ? 'rgba(251, 194, 86, 0.2)' : 'transparent',
     color: '#fbc256',
-    border: '2px solid black',
+    border: '2px solid #333',
     padding: '12px',
     borderRadius: '10px',
     cursor: 'pointer',
@@ -64,7 +63,7 @@ const AdminScreen = () => {
     justifyContent: 'center'
   })
 
-  const menuItemStyle = {
+  const menuItemStyle = (isActive) => ({
     fontWeight: 'bold',
     fontSize: '16px',
     color: '#fbc256',
@@ -75,27 +74,24 @@ const AdminScreen = () => {
     borderBottom: '2px solid #fbc256',
     width: '100%',
     textAlign: 'left',
-    background: 'none',
+    background: isActive ? 'rgba(251, 194, 86, 0.2)' : 'none',
     border: 'none',
-    transition: 'opacity 0.2s ease',
+    transition: 'all 0.3s ease',
     whiteSpace: 'nowrap',
     opacity: isMenuOpen ? 1 : 0,
     visibility: isMenuOpen ? 'visible' : 'hidden',
     transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
-    transitionDelay: isMenuOpen ? '0.1s' : '0s',
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
-    backgroundColor: 'transparent',
     overflow: 'hidden',
-    textOverflow: 'ellipsis'
-  }
-
+    textOverflow: 'ellipsis',
+    borderRadius: '8px'
+  })
 
   const rightSectionStyle = {
     borderLeft: '3px solid #fbc256',
     padding: '0 1.5vw',
-
     maxWidth: isMenuOpen ? 'calc(100vw - 390px)' : 'calc(100vw - 120px)',
     minWidth: isMenuOpen ? 'calc(100vw - 390px)' : 'calc(100vw - 120px)',
     width: isMenuOpen ? 'calc(100vw - 390px)' : 'calc(100vw - 120px)',
@@ -115,10 +111,12 @@ const AdminScreen = () => {
 
   const currentScreen = menuItems.find(item => item.key === screen);
   const title = currentScreen ? currentScreen.label : '';
+  
   return (
     <div className='admin-screen-container' style={containerStyle}>
       <div className='admin-screen-left' style={leftSectionStyle}>
         <button 
+          className="menu-button"
           style={menuButtonStyle}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -130,6 +128,7 @@ const AdminScreen = () => {
             {menuItems.map((item) => (
               <button
                 key={item.key}
+                className={`icon-button ${screen === item.key ? 'active' : ''}`}
                 style={iconButtonStyle(screen === item.key)}
                 onClick={() => setScreen(item.key)}
                 title={item.label}
@@ -143,9 +142,9 @@ const AdminScreen = () => {
             {menuItems.map((item, index) => (
               <button
                 key={item.key}
+                className={`menu-item-button ${screen === item.key ? 'active' : ''}`}
                 style={{
-                  ...menuItemStyle,
-                  backgroundColor: screen === item.key ? 'rgba(251, 194, 86, 0.2)' : 'transparent',
+                  ...menuItemStyle(screen === item.key),
                   transitionDelay: isMenuOpen ? `${0.1 + index * 0.05}s` : '0s'
                 }}
                 onClick={() => setScreen(item.key)}
@@ -161,14 +160,9 @@ const AdminScreen = () => {
       </div>
 
       <div className='admin-screen-right' style={rightSectionStyle}>
-      <h2 style={{
-          color: '#333',
-          fontWeight: 'bold',
-          fontSize: '24px',
-          marginBottom: '20px',
-          borderBottom: '2px solid #fbc256',
-          paddingBottom: '10px'
-        }}>{title}</h2>
+        <h2 className="section-title">
+          {title}
+        </h2>
         {screen === 'postingPet' && <PostingPets />}
         {screen === 'approvedRequests' && <ApprovedRequests />}
         {screen === 'adoptingPet' && <AdoptingRequests />}
