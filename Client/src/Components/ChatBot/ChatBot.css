@@ -49,15 +49,18 @@
   opacity: 1;
 }
 
+/* -------------------- POPUP DEL CHATBOT -------------------- */
+
 .chatbot-popup {
   position: fixed;
   bottom: 90px;
   right: 35px;
   width: 420px;
-  height: 570px;
+  height: calc(100vh - 120px);
+  max-height: 800px;
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.2);
+  transform: scale(0.5);
   overflow: hidden;
   border-radius: 15px;
   transform-origin: bottom right;
@@ -69,6 +72,7 @@
   z-index: 999;
 }
 
+/* MOSTRAR EL CHATBOT CUANDO TENGA LA CLASE show-chatbot */
 .container.show-chatbot .chatbot-popup {
   opacity: 1;
   transform: scale(1);
@@ -136,10 +140,10 @@
 .chat-body {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   height: calc(100% - 140px);
   overflow-y: auto;
-  padding: 25px 22px;
+  padding: 20px 22px;
   scrollbar-width: thin;
   scrollbar-color: #ffdbcc transparent;
 }
@@ -149,10 +153,11 @@
   align-items: flex-start;
   gap: 11px;
 }
+
 .chat-body .message.error .message-text{
   color: #ff0000;
-
 }
+
 .chat-body .bot-message svg {
   width: 35px;
   height: 35px;
@@ -263,6 +268,11 @@
 /* -------------------- Responsive -------------------- */
 
 @media (max-width: 520px) {
+  /* Ocultar el botón flotante cuando el chat está abierto */
+  .container.show-chatbot #chatbot-toggler {
+    display: none;
+  }
+  
   #chatbot-toggler {
     right: 20px;
     bottom: 20px;
