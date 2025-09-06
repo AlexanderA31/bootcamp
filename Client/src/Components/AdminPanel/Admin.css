@@ -201,3 +201,276 @@
   align-items: center;
   gap: 4px;
 }
+/* ==================== RESPONSIVE ADMIN PANEL - AGREGAR AL FINAL ==================== */
+
+/* Ajustes generales */
+.req-filter-selection {
+    font-size: 16px !important;
+}
+
+.login-container input {
+    font-size: 16px !important;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 8px 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 20px;
+    }
+    
+    .navbar-time {
+        font-size: 14px;
+    }
+    
+    .admin-screen-container {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 15px;
+    }
+    
+    .admin-screen-left {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        order: 1;
+    }
+    
+    .admin-screen-right {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        border-left: none;
+        border-top: 3px solid #fbc256;
+        padding: 20px 0;
+        order: 2;
+    }
+    
+    .form-child-container {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pet-view-card {
+        max-width: 100%;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 18px;
+        order: 1;
+    }
+    
+    .navbar-time {
+        font-size: 13px;
+        order: 2;
+        text-align: center;
+    }
+    
+    .logout-btn {
+        order: 3;
+        font-size: 14px;
+    }
+    
+    .admin-screen-container {
+        padding: 15px 10px;
+        min-height: calc(100vh - 160px);
+    }
+    
+    .admin-screen-left p {
+        font-size: 14px;
+        padding: 10px 12px;
+        text-align: center;
+    }
+    
+    .req-filter-selection {
+        min-width: 150px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .pet-card-details h2,
+    .form-card-details h2 {
+        font-size: 1.3rem;
+    }
+    
+    .pet-card-details p,
+    .form-card-details p {
+        font-size: 14px;
+    }
+    
+    .show-interest-btn,
+    .app-rej-btn {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .show-interest-btn button,
+    .app-rej-btn button {
+        width: 100%;
+        min-width: auto;
+        margin: 0;
+    }
+    
+    .popup-content {
+        padding: 15px;
+        margin: 10px;
+        max-width: calc(100vw - 40px);
+    }
+}
+
+/* Extra small screens (mobile portrait) */
+@media (max-width: 480px) {
+    .login-container {
+        max-width: 280px;
+        padding: 15px;
+    }
+    
+    .login-container h2 {
+        font-size: 1.3rem;
+    }
+    
+    .navbar-brand {
+        font-size: 16px;
+    }
+    
+    .navbar-time {
+        font-size: 12px;
+    }
+    
+    .admin-screen-container {
+        padding: 10px 5px;
+    }
+    
+    .admin-screen-left {
+        padding: 15px;
+    }
+    
+    .admin-screen-left h3 {
+        font-size: 16px;
+    }
+    
+    .admin-screen-left p {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+    
+    .req-filter-selection {
+        min-width: 120px;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .pet-view-card {
+        margin: 8px 0;
+    }
+    
+    .pet-card-details,
+    .form-card-details {
+        padding: 12px;
+    }
+    
+    .pet-card-details h2,
+    .form-card-details h2 {
+        font-size: 1.2rem;
+        margin: 5px 0 10px 0;
+    }
+    
+    .pet-card-details p,
+    .form-card-details p {
+        font-size: 13px;
+        margin: 6px 0;
+    }
+    
+    .show-interest-btn,
+    .app-rej-btn {
+        padding: 10px;
+    }
+    
+    .show-interest-btn button,
+    .app-rej-btn button {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+    
+    .popup {
+        padding: 10px;
+    }
+    
+    .popup-content {
+        padding: 12px;
+        max-width: calc(100vw - 20px);
+    }
+    
+    .close-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+        margin-top: 10px;
+    }
+    
+    .admin-footer {
+        position: relative;
+        margin-top: 20px;
+    }
+    
+    .admin-footer p {
+        font-size: 12px;
+    }
+}
+
+/* Ultra small screens */
+@media (max-width: 360px) {
+    .login-container {
+        max-width: 250px;
+        padding: 12px;
+    }
+    
+    .navbar {
+        padding: 8px 10px;
+    }
+    
+    .navbar-brand {
+        font-size: 14px;
+    }
+    
+    .admin-screen-left p {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+    
+    .req-filter-selection {
+        min-width: 100px;
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+    
+    .pet-card-details h2,
+    .form-card-details h2 {
+        font-size: 1.1rem;
+    }
+    
+    .pet-card-details p,
+    .form-card-details p {
+        font-size: 12px;
+    }
+    
+    .show-interest-btn button,
+    .app-rej-btn button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
