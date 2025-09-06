@@ -81,7 +81,7 @@ pets/
 
 ### Descripción de Directorios Principales:
 
--   **`Client/`**: Frontend construido con React que maneja la interfaz de usuario
+-   **`client/`**: Frontend construido con React que maneja la interfaz de usuario
 -   **`server/`**: Backend construido con Node.js, Express y MongoDB que maneja la lógica del servidor y la base de datos
 
 ## Instalación y Configuración
@@ -131,8 +131,15 @@ Para ejecutar la aplicación en tu máquina local, sigue estos pasos.
     ```bash
     npm install
     ```
+    
+3.  **Crea un archivo `.env`:**
+    Crea un archivo llamado `.env` en el directorio `client` y agrega tu cadena de conexión de MongoDB:
+    ```
+    REACT_APP_API_URL=http://localhost:4000
+    REACT_APP_GEMINI_API_URL=
+    ```
 
-3.  **Inicia el servidor de desarrollo de React:**
+4.  **Inicia el servidor de desarrollo de React:**
     ```bash
     npm start
     ```
