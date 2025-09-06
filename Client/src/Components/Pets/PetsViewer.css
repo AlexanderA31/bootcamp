@@ -1,0 +1,28 @@
+  .pet-view-card {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #ffa64d;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin: 1rem 0;
+    font-family: "Arial", sans-serif;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pet-card-pic {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #f4f4f4;
+    overflow: hidden;
+
+  }
+
+  .pet-img-rounded {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
