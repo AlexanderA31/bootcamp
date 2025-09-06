@@ -9,7 +9,7 @@ const AdminLogin = () => {
   useEffect(() => {
     // Simulated users data for demo purposes
     setUsersData({
-      username: "admin",
+      username: "admin@gmail.com",
       password: "password123"
     });
   }, []);
