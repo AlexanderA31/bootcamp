@@ -1920,3 +1920,129 @@ select {
         border: 1px solid #ccc;
     }
 }
+
+
+@media (max-width: 768px) {
+    .pet-view-card {
+        width: 100%;
+        max-width: 350px;
+        margin: 10px auto;
+        min-height: auto;
+    }
+    
+    .pet-card-pic {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        background-color: var(--background);
+    }
+    
+    .pet-card-pic img {
+        width: 100% !important;
+        max-width: 280px;
+        height: 200px !important;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    
+    .pet-img-rounded {
+        width: 100% !important;
+        max-width: 280px !important;
+        height: 200px !important;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .pet-card-details {
+        padding: 20px;
+        width: 100%;
+    }
+    
+    .pet-card-details h2 {
+        font-size: 1.5rem;
+        margin: 10px 0 15px 0;
+    }
+    
+    .pet-info-row {
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+    }
+    
+    .pet-info-icon {
+        margin-right: 10px;
+        width: 25px;
+    }
+    
+    .pet-info-value {
+        padding: 3px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .show-interest-btn button {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 16px;
+        margin: 15px 0 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .pet-container {
+        padding: 10px 5px;
+    }
+    
+    .pet-view-card {
+        margin: 8px auto;
+        max-width: 95vw;
+    }
+    
+    .pet-card-pic {
+        padding: 10px;
+    }
+    
+    .pet-card-pic img,
+    .pet-img-rounded {
+        max-width: 100% !important;
+        height: 180px !important;
+    }
+    
+    .pet-card-details {
+        padding: 15px;
+    }
+    
+    .pet-card-details h2 {
+        font-size: 1.3rem;
+    }
+    
+    .pet-info-row {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+    
+    .pet-info-value {
+        padding: 2px 8px;
+        font-size: 0.85rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .pet-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+
+    .pet-view-card * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
