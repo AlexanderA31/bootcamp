@@ -109,6 +109,9 @@ Para ejecutar la aplicación en tu máquina local, sigue estos pasos.
     Crea un archivo llamado `.env` en el directorio `server` y agrega tu cadena de conexión de MongoDB:
     ```
     mongooseURL=tu_cadena_de_conexion_mongodb
+    CLOUDINARY_CLOUD_NAME=
+    CLOUDINARY_API_KEY=
+    CLOUDINARY_API_SECRET=
     ```
 
 4.  **Inicia el servidor:**
