@@ -10,7 +10,7 @@ import AdoptForm from "./Components/AdoptForm/AdoptForm";
 import AdminLogin from "./Components/AdminPanel/AdminLogin";
 import "./App.css";
 import { ThemeContext } from './context/ThemeContext';
-
+import ChatBot from "./Components/ChatBot/ChatBot";
 const Layout = ({ children }) => (
   <>
     <Navbar title="Adop.me" />
@@ -35,6 +35,7 @@ const App = () => {
             element={
               <Layout>
                 <Home description="Asegúrese de estar completamente preparado para brindar el cuidado y la atención adecuados a su mascota antes de darle la bienvenida a su hogar." />
+                <ChatBot />
               </Layout>
             }
           />
