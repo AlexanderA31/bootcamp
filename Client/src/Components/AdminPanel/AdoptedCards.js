@@ -27,7 +27,7 @@ const AdoptedCards = (props) => {
       }
     } catch (err) {
       setShowErrorPopup(true);
-      console.error('Error deleting pet:', err);
+      console.error('Error deleting pet:', err); 
     } finally {
       setIsDeleting(false);
     }
