@@ -260,8 +260,6 @@ Este proyecto fue desarrollado por un talentoso equipo de desarrolladores:
 |---------------|-----|
 | **Alexander Ufredo Alegria Chavez** | Full Stack Developer | 
 | **Moises Fernando Alvarez Orellana** | Frontend Developer | 
-| **Ivan De Jesus Vera Yagual** | Backend Developer | 
-| **Angel Abisai Lezama Gutierrez** | DevOps & Database | 
 
 ---
 
